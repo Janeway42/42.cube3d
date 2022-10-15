@@ -116,6 +116,10 @@ int check_input(int fd, t_data *data)
 			}				
 		}
 	}
+	if (data->nr_paths < 3)
+		error_exit_input("not enough paths");
+	if (data->nr_colors < 1)
+		error_exit_input("not enough colors");
 	close(fd);
 	return (0);
 }
