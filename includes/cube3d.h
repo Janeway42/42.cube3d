@@ -8,6 +8,8 @@
 #include "libft.h"
 #include "get_next_line.h"
 
+#define MAP_ROW = { ,0,1,N,S,E,W}
+#define MAP_PLAYER = {N,S,E,W}
 
 typedef struct  s_data
 {
@@ -17,7 +19,18 @@ typedef struct  s_data
 
     int nr_paths;
     int nr_colors;
+    int map_rows;
+    int map_colums;
+    int player;
+    int map_start;  //??
 }               t_data;
+
+/*
+// ---------------- Verify ---------------------- 
+*/
+
+int open_fd(char *file);
+int check_input(int fd, t_data *data);
 
 /*
 // ---------------- Free ---------------------- 
