@@ -81,12 +81,10 @@ int check_input(int fd, t_data *data)
 		{
 			if (check_row(line) == 0)
 			{
-				if (data->nr_paths < 3 || data->nr_colors < 1)
-					error_exit_input("not enough paths/colors");
 				if (check_player_double(line)!= 0)
 					error_exit_input("invalid map input");
-				if (data->map_start == 0)
-					data->map_start = data->map_rows;
+				// if (data->map_start == 0)
+				// 	data->map_start = data->map_rows;      not actually using ....
 				lenght = ft_strlen(line);
 				if (data->map_colums < lenght)
 					data->map_colums = lenght;
