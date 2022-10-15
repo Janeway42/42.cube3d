@@ -93,7 +93,7 @@ int check_input(int fd, t_data *data)
 				data->map_rows++; 
 			}
 
-			if (check_string(line[i], MAP_PLAYER))
+			if (check_string(line[i], MAP_PLAYER) == 1)
 			{
 				if (line[i] == 'N' && line[i + 1] == 'O')
 					data->nr_paths++;
