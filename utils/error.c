@@ -3,7 +3,7 @@
 void error_exit_input(char *str)
 {
     printf("Error\n");
-    printf(str);
+    printf("%s",str);
     printf("\n");
     exit(1);
 }

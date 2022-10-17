@@ -8,8 +8,8 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-#define MAP_ROW = { ,0,1,N,S,E,W}
-#define MAP_PLAYER = {N,S,E,W}
+#define MAP_ROW " 01NSEW"
+#define MAP_PLAYER "NSEW"
 
 typedef struct  s_data
 {
@@ -22,7 +22,7 @@ typedef struct  s_data
     int map_rows;
     int map_colums;
     int player;
-    int map_start;  //??
+    // int map_start;  //??
 }               t_data;
 
 /*
@@ -31,6 +31,14 @@ typedef struct  s_data
 
 int open_fd(char *file);
 int check_input(int fd, t_data *data);
+int check_row(char *line);
+int check_string(char c, const char *array);
+
+/*
+// ---------------- Parsing ---------------------- 
+*/
+
+void parse_map(int fd, t_data *data);
 
 /*
 // ---------------- Free ---------------------- 

@@ -5,24 +5,24 @@ void allocate_map_memory(t_data *data)
     int i;
 
     i = 0;
-    map = malloc(sizeof(char*) * (data->map_rows + 3));
-    if (!map)
+    data->map = malloc(sizeof(char*) * (data->map_rows + 3));
+    if (!data->map)
         error_exit_input("failed map malloc");
-    map[data->map_rows + 2] = NULL;
+    data->map[data->map_rows + 2] = NULL;
     while (i < (data->map_rows + 3))
     {
-        map[i] = malloc(sizeof(char) * (data->map_colums + 3));
-        if (!map[i])
+        data->map[i] = malloc(sizeof(char) * (data->map_colums + 3));
+        if (!data->map[i])
         {
             while (i > -1)
             {
-                free(map[i]);
+                free(data->map[i]);
                 i--;
             }
-            free(map);
+            free(data->map);
             error_exit_input("failed map malloc");
         }
-        map[i][data->map_colums + 2] = '\0';
+        data->map[i][data->map_colums + 2] = '\0';
         i++;
     }    
 }
@@ -40,10 +40,10 @@ void parse_map(int fd, t_data *data)
     row = 0;
     i = 0;
 
-    while (map[0][i] != '\0')
+    while (data->map[0][i] != '\0')
     {
-        map[0][i] = ' ';
-        i++
+        data->map[0][i] = ' ';
+        i++;
     }
     row++;
 
@@ -59,15 +59,15 @@ void parse_map(int fd, t_data *data)
 			if (check_row(line) == 0)
 			{   
                 i = 0;
-                map[row][i] = ' ';
+                data->map[row][i] = ' ';
                 while (line[i] != '\0')
                 {
-                    map[row][i + 1] = line[i];
+                    data->map[row][i + 1] = line[i];
                     i++;
                 }
-                while (map[row][i + 1] != '\0')
+                while (data->map[row][i + 1] != '\0')
                 {
-                    map[row][i + 1] = ' ';
+                    data->map[row][i + 1] = ' ';
                     i++;
                 }
                 row++;
@@ -87,7 +87,7 @@ void parse_map(int fd, t_data *data)
                 {
                     while (i < 2)
                     {
-                        data->paths[paths][i] = ft_strdup(split_line[i]);  // don't forget free
+                        data->paths[paths][i] = *ft_strdup(split_line[i]);  // don't forget free
                         i++;
                     }
                 }
@@ -107,12 +107,12 @@ void parse_map(int fd, t_data *data)
                 char **split_num;
 
                 split_line = ft_split(line, ' ');
-                if (split_line == NULL);
+                if (split_line == NULL)
                 {
                     //free stuff
                     error_exit_input("failed ft_split");
                 }
-                data->colors[colors][0] = ft_strdup(split_line[0]);
+                data->colors[colors][0] = *ft_strdup(split_line[0]);
                 
                 split_num = ft_split(split_line[1], ',');
                 if (split_num == NULL)
@@ -124,7 +124,7 @@ void parse_map(int fd, t_data *data)
                 i = 0;
                 while (i < 4)
                 {
-                    data->colors[colors][i + 1] = ft_strdup(split_num[i]);
+                    data->colors[colors][i + 1] = *ft_strdup(split_num[i]);
                     i++;
                 }
 
@@ -135,10 +135,10 @@ void parse_map(int fd, t_data *data)
         }
 
         i = 0;
-        while (map[row][i] != '\0')
+        while (data->map[row][i] != '\0')
         {
-          map[row][i] = ' ';
-          i++
+          data->map[row][i] = ' ';
+          i++;
         }
     }
 }

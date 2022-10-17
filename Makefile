@@ -1,13 +1,16 @@
 NAME = cube3D
 CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 
-S_SRC	=	main.c
+S_SRC	=	main.c\
+			check_input.c\
+			parse_map.c\
+			parse_utils.c
 
 S_PATH	=	src/
 S_OBJ	=	$(S_SRC:%.c=$(S_PATH)%.o)
 
-UTILS		=	error_free_exit.c\
-				utils.c
+UTILS		=	error.c\
+				free.c
 UTILS_PATH	=	utils/
 UTILS_OBJ	=	$(UTILS:%.c=$(UTILS_PATH)%.o)
 
@@ -22,22 +25,17 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	make -C libft
-	make -C mlx
-	mv mlx/libmlx.dylib .
-	$(CC) $(CFLAGS) $(OBJ_FILES) -L. -lmlx -framework OpenGL -framework AppKit libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ_FILES) libft/libft.a -o $(NAME)
 	
 %.o: %.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C libft
-	make clean -C mlx
 	$(RM) $(OBJ_FILES)
 
 fclean: clean
 	make fclean -C libft
-	make clean -C mlx
-	$(RM) libmlx.dylib
 	$(RM) $(NAME)
 
 re:

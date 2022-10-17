@@ -19,15 +19,15 @@ void free_memory(t_data *data)
     int j;
 
     i = 0;
-    if (map)
+    if (data->map)
     {
-        while (map[i] != NULL)
+        while (data->map[i] != NULL)
         {
-            if (map[i])
-                free_double(map[i]);
+            if (data->map[i])
+                free_double(&data->map[i]);
             i++;
         }
-        free(map);
+        free(data->map);
     }
 
     i = 0;
@@ -36,8 +36,8 @@ void free_memory(t_data *data)
         j = 0;
         while (j < 2)
         {
-            if (path[i][[j]])
-                free(path[i][j]);
+            if (data->paths[i][j])
+                free(&data->paths[i][j]);
             j++;
         }
         i++;
@@ -49,8 +49,8 @@ void free_memory(t_data *data)
         j = 0;
         while (j < 4)
         {
-            if (colors[i][[j]])
-                free(path[i][j]);
+            if (data->colors[i][j])
+                free(&data->paths[i][j]);
             j++;
         }
         i++;

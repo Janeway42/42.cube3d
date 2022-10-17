@@ -37,10 +37,10 @@ int check_player_double(char *line)
 		}
 		i++;
 	}
-	return (0)
+	return (0);
 }
 
-check_row(char *line, t_data *data)
+int check_row(char *line)
 {
 	// const char row_elements = { ,0,1,N,S,E,W};
 	int i;
@@ -68,17 +68,18 @@ check_row(char *line, t_data *data)
 int check_input(int fd, t_data *data)
 {
 	char *line;
-	char **split_line;
 	int i;
 	int lenght;
 
 	while (get_next_line(fd, &line) > 0)
 	{
+
 		i = 0;
 		while (line[i] == ' ' || line[i] == '\t')
 			i++;
 		if (line[i] != '\n')
 		{
+        	printf("test line\n");
 			if (check_row(line) == 0)
 			{
 				if (check_player_double(line)!= 0)
@@ -121,3 +122,29 @@ int check_input(int fd, t_data *data)
 	close(fd);
 	return (0);
 }
+
+int i = 0;
+int player = 0;
+int non_line = 0;
+
+while (line[i] != '\0')
+{
+	if (line[i] == ' ' || line[i] == '0' || line[i] == '1')
+		i++;
+	else if (check_string(line[i], MAP_PLAYER) == 1)
+	{
+		if (player == 1)
+			break ;
+		else
+			player = 1;
+	}
+	else
+	{
+		if (non_line == 0)
+			non_line = 1;
+	}
+}
+
+if (non_line == 1) // --- this is not a map line
+if (non_line == 1 && data->map_start != 0) // --- this is an invalid map as I already started the map 
+if (non_line == 0 && player == 1) // --- this is an invalid map
