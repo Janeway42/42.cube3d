@@ -56,7 +56,7 @@ void parse_map(int fd, t_data *data)
             i++;
         if (line[i] != '\n')
         {
-			if (check_row(line) == 0)
+			if (check_row_map(line) == 0)
 			{   
                 i = 0;
                 data->map[row][i] = ' ';
@@ -87,7 +87,7 @@ void parse_map(int fd, t_data *data)
                 {
                     while (i < 2)
                     {
-                        data->paths[paths][i] = *ft_strdup(split_line[i]);  // don't forget free
+                        data->paths[paths][i] = ft_strdup(split_line[i]);  // don't forget free
                         i++;
                     }
                 }

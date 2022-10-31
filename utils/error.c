@@ -5,5 +5,6 @@ void error_exit_input(char *str)
     printf("Error\n");
     printf("%s",str);
     printf("\n");
+    // free_memory(data);
     exit(1);
 }

@@ -3,8 +3,7 @@ CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 
 S_SRC	=	main.c\
 			check_input.c\
-			parse_map.c\
-			parse_utils.c
+
 
 S_PATH	=	src/
 S_OBJ	=	$(S_SRC:%.c=$(S_PATH)%.o)
