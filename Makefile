@@ -2,7 +2,9 @@ NAME = cube3D
 CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 
 S_SRC	=	main.c\
-			check_input.c\
+			process_input.c\
+			process_path_color.c\
+			process_map.c
 
 
 S_PATH	=	src/

@@ -10,10 +10,29 @@ int open_fd(char *file)
     return (fd);
 }
 
-static void initialize_data(t_data *data)
+unsigned char **assign_memory(void)
 {
+    unsigned char **str;
     int i;
 
+    str = malloc(sizeof(char **) * 3);
+    if (!str)
+        error_exit_input("malloc fail");
+    str[2] = NULL;
+    i = 0;
+    while (i < 2)
+    {
+        str[i] = malloc(sizeof(char *) * 1);
+        if (!str[i])
+            error_exit_input("malloc fail");
+        str[i][0] = '\0';
+        i++;
+    }
+    return (str);
+}
+
+static void initialize_data(t_data *data)
+{
     data->nr_paths = 0;
     data->nr_colors = 0;
     data->map_rows = 0;
@@ -23,53 +42,12 @@ static void initialize_data(t_data *data)
     data->map_lenght = 0;
     data->map_row_lenght = 0;
 
-    data->paths = malloc(sizeof(char ***) * 5);
-    if (!data->paths)
-    {
-        printf("malloc failure\n");
-        exit(1);
-    }
-    data->paths[4] = NULL;
-    i = 0;
-    while (i < 4)
-    {
-        data->paths[i] = malloc(sizeof(char **) * 3);
-        if (!data->paths[i])
-        {
-            printf("malloc failure\n");
-            exit(1);
-        }
-        data->paths[i][0] = malloc(sizeof(char *) * 1);
-        data->paths[i][1] = malloc(sizeof(char *) * 1);
-
-        data->paths[i][2] = NULL;
-        i++;
-    }
-
-    data->colors = malloc(sizeof(unsigned char ***) * 3);
-    if (!data->colors)
-    {
-        printf("malloc failure\n");
-        exit(1);
-    }
-    data->colors[2] = NULL;
-    i = 0;
-    while (i < 2)
-    {
-        data->colors[i] = malloc(sizeof(unsigned char **) * 5);
-        if (!data->colors[i])
-        {
-            printf("malloc failure\n");
-            exit(1);
-        }
-        data->colors[i][0] = malloc(sizeof(unsigned char *) * 1);
-        data->colors[i][1] = malloc(sizeof(unsigned char *) * 1);
-        data->colors[i][2] = malloc(sizeof(unsigned char *) * 1);
-        data->colors[i][3] = malloc(sizeof(unsigned char *) * 1);
-
-        data->colors[i][4] = NULL;
-        i++;
-    }
+    data->north = (char **)assign_memory();
+    data->south = (char **)assign_memory();
+    data->east = (char **)assign_memory();
+    data->west = (char **)assign_memory();
+    data->floor = assign_memory();
+    data->celeing = assign_memory();
 }
 
 int check_extension(char *str)
@@ -92,19 +70,13 @@ int check_extension(char *str)
 int main(int argc, char** argv)
 {
     t_data data;
-    // int fd;
-
-    // fd = open_fd(argv[1]);
-    // printf("fd: %d\n", fd);
 
     if (argc == 2)
     {
         if (check_extension(argv[1]) == 1)
             return (1);
         initialize_data(&data);
-        check_input(argv[1], &data);
-        printf("test\n");
-        // parse_map(fd, &data);
+        process_input(argv[1], &data);
     }
     else
     {

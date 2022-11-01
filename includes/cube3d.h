@@ -14,9 +14,14 @@
 
 typedef struct  s_data
 {
-    char ***paths;
-    unsigned char ***colors;
-    char ***map;  // map  - 2d array  - create padding
+    char **north;
+    char **south;
+    char **east;
+    char **west;
+    unsigned char **floor;
+    unsigned char **celeing;
+
+    char **map;  // map  - 2d array  - create padding
     
     // char paths[4][2];  // paths - 4 arrays of 2 elements 
     // unsigned char colors[2][4];  // colors - 2 arrays of 2 elements 
@@ -25,6 +30,7 @@ typedef struct  s_data
     int nr_colors;
     int map_rows;
     int map_colums;
+    char player_direction;
     int player;
     int map_start;
     int map_lenght;
@@ -36,13 +42,19 @@ typedef struct  s_data
 */
 
 int open_fd(char *file);
-int check_input(char *file, t_data *data);
+int process_input(char *file, t_data *data);
 int check_row_map(char *line);
 int check_string(char c, const char *array);
 
 /*
 // ---------------- Parsing ---------------------- 
 */
+
+void check_store_path(char *line, char **str, t_data *data);
+void check_store_color(char *line, unsigned char **str, t_data *data);
+void check_store_map(int fd, char **line, t_data *data);
+
+
 
 void parse_map(int fd, t_data *data);
 

@@ -13,47 +13,30 @@ void free_double(char **str)
     free(str);
 }
 
-void free_triple(char ***str)
-{
-    char ***temp;
-
-    temp = str;
-    while (*temp)
-    {
-        free_double(*temp);
-        temp++;
-    }
-    free(temp);
-}
-
-// void free_array(char **str, int row, int col)
-// {
-//     int i;
-//     int j;
-
-//     i = 0;
-//     while (i < row)
-//     {
-//         j = 0;
-//         while (j < col)
-//         {
-//             if (str[i][j])
-//                 free(str[i][j]);
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
 void free_memory(t_data *data)
 {
     if (data->map)
-        free_triple(data->map);
+    {
+        int i = 0;
 
-    if (data->paths)
-        free_triple(data->paths);
-
-    if (data->colors)
-        free_triple((char ***)data->colors);
+        while (i < data->map_lenght)
+        {
+            free(data->map[i]);
+            i++;
+        }
+        free(data->map);
+    }
+    if (data->north)
+        free_double(data->north);
+    if (data->south)
+        free_double(data->south);
+    if (data->east)
+        free_double(data->east);
+    if (data->west)
+       free_double(data->west);
+    if (data->floor)
+       free_double((char **)data->floor);
+    if (data->celeing)
+       free_double((char **)data->celeing);
 }
 
