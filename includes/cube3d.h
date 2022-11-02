@@ -21,10 +21,7 @@ typedef struct  s_data
     unsigned char **floor;
     unsigned char **celeing;
 
-    char **map;  // map  - 2d array  - create padding
-    
-    // char paths[4][2];  // paths - 4 arrays of 2 elements 
-    // unsigned char colors[2][4];  // colors - 2 arrays of 2 elements 
+    char **map;  // map  - 2d array   
 
     int nr_paths;
     int nr_colors;
@@ -38,40 +35,31 @@ typedef struct  s_data
 }               t_data;
 
 /*
-// ---------------- Verify ---------------------- 
+// ---------------- Verify & Parsing---------------------- 
 */
 
 int open_fd(char *file);
-int process_input(char *file, t_data *data);
 int check_row_map(char *line);
-int check_string(char c, const char *array);
-
-/*
-// ---------------- Parsing ---------------------- 
-*/
-
+void check_extension(char *str1, char *str2);
+int check_player(char c, const char *array);
+int process_input(char *file, t_data *data);
+char *check_store_path_color(int fd, t_data *data);
 void check_store_path(char *line, char **str, t_data *data);
 void check_store_color(char *line, unsigned char **str, t_data *data);
 void check_store_map(int fd, char **line, t_data *data);
-
-
-
-void parse_map(int fd, t_data *data);
+void check_map_validity(char **map, t_data *data);
 
 /*
 // ---------------- Free ---------------------- 
 */
 
 void free_double(char **str);
-void free_triple(char ***str);
 void free_memory(t_data *data);
-
 
 /*
 // ---------------- Error ---------------------- 
 */
 
 void error_exit_input(char *str);
-
 
 #endif

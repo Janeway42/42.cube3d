@@ -3,8 +3,10 @@ CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 
 S_SRC	=	main.c\
 			process_input.c\
+			process_input_utils.c\
 			process_path_color.c\
-			process_map.c
+			process_map.c\
+			process_map_validity.c
 
 
 S_PATH	=	src/

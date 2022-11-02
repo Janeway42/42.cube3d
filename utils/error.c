@@ -1,10 +1,9 @@
 #include "../includes/cube3d.h"
 
-void error_exit_input(char *str)
+void	error_exit_input(char *str)
 {
-    printf("Error\n");
-    printf("%s",str);
-    printf("\n");
-    // free_memory(data);
-    exit(1);
+	printf("Error\n");
+	printf("%s", str);
+	printf("\n");
+	exit(1);
 }
