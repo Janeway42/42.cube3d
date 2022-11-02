@@ -25,13 +25,11 @@ typedef struct  s_data
 
     int nr_paths;
     int nr_colors;
-    int map_rows;
-    int map_colums;
     char player_direction;
     int player;
     int map_start;
-    int map_lenght;
-    int map_row_lenght;
+    int map_rows;
+    int map_columns;
 }               t_data;
 
 /*

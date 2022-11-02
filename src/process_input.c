@@ -22,21 +22,21 @@ static void	find_map_start(int fd, t_data *data)
 			error_exit_input("invalid input/map");
 	}
 	data->map_start++;
-	data->map_lenght++;
-	data->map_row_lenght = ft_strlen(line);
+	data->map_rows++;
+	data->map_columns = ft_strlen(line);
 	while (get_next_line(fd, &line) > 0)
 	{
 		row = ft_strlen(line);
-		if (row > data->map_row_lenght)
-			data->map_row_lenght = row;
-		data->map_lenght++;
+		if (row > data->map_columns)
+			data->map_columns = row;
+		data->map_rows++;
 	}
 	if (line[i] != '\0')
 	{
 		row = ft_strlen(line);
-		if (row > data->map_row_lenght)
-			data->map_row_lenght = row;
-		data->map_lenght++;
+		if (row > data->map_columns)
+			data->map_columns = row;
+		data->map_rows++;
 	}	
 }
 

@@ -21,13 +21,13 @@ void	check_map_validity(char **map, t_data *data)
 	i++;
 
 	// middle section
-	while (i < (data->map_lenght - 1))
+	while (i < (data->map_rows - 1))
 	{
 		if (map[i][0] == '0' || check_player(map[i][0], MAP_PLAYER) == 1)
 			error_exit_input("invalid map");
 		j = 1;
 
-		while (j < data->map_row_lenght)
+		while (j < data->map_columns)
 		{
 			if (map[i][j] == '0' || check_player(map[i][j], MAP_PLAYER) == 1)
 			{

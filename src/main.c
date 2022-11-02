@@ -35,12 +35,10 @@ static void	initialize_data(t_data *data)
 {
 	data->nr_paths = 0;
 	data->nr_colors = 0;
-	data->map_rows = 0;
-	data->map_colums = 0;
 	data->player = 0;
 	data->map_start = 0;
-	data->map_lenght = 0;
-	data->map_row_lenght = 0;
+	data->map_rows = 0;
+	data->map_columns = 0;
 	data->north = (char **)assign_memory();
 	data->south = (char **)assign_memory();
 	data->east = (char **)assign_memory();
@@ -58,7 +56,7 @@ void	check_extension(char *str1, char *str2)
 	split = ft_split(str1, '.');
 	if (split == NULL)
 		error_exit_input("failed split");
-	if (ft_strcmp(split[1], str2) != 0)
+	if (split[1] == NULL || ft_strcmp(split[1], str2) != 0)
 		error_exit_input("wrong extension");
 	free(split);
 }

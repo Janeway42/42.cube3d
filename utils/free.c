@@ -20,7 +20,7 @@ void	free_memory(t_data *data)
 	if (data->map)
 	{
 		i = 0;
-		while (i < data->map_lenght)
+		while (i < data->map_rows)
 		{
 			free(data->map[i]);
 			i++;
