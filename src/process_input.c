@@ -52,11 +52,11 @@ int	process_input(char *file, t_data *data)
 	close(fd);
 
 	fd = open_fd(file);
-	line = check_store_path_color(fd, data);
+	line = process_path_color(fd, data);
 	check_store_map(fd, &line, data);
 	close(fd);
 
-	check_map_validity(data->map, data);
+	check_map_validity(data);
 
 	free_memory(data);
 	return (0);

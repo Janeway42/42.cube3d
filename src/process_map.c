@@ -1,6 +1,6 @@
 #include "../includes/cube3d.h"
 
-void	print_map(t_data *data)    // remove -------------------------------------
+void	print_map(t_data *data) // remove -------------------------------------
 {
 	int	i;
 	int	j;
@@ -66,7 +66,6 @@ void	check_store_map(int fd, char **line, t_data *data)
 
 	copy_row(i, *line, data); // first line
 	i++;
-
 	while (get_next_line(fd, line) > 0) // middle of the map 
 	{
 		if (i < data->map_rows && check_row_map(*line) == 1)
@@ -74,10 +73,9 @@ void	check_store_map(int fd, char **line, t_data *data)
 		copy_row(i, *line, data);
 		i++;
 	}
-
 	if (check_row_map(*line) == 1) // last line    /// i < data->rows ??//
 		error_exit_input("invalid input");
 	copy_row(i, *line, data);
 
-	print_map(data);
+	print_map(data); // remove ----------------------------
 }

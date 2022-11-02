@@ -1,5 +1,15 @@
 #include "../includes/cube3d.h"
 
+int	open_fd(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		error_exit_input("failed to open fd");
+	return (fd);
+}
+
 // checks if the element of a row belongs to the array
 // ----------------------------------------------------------------------
 

@@ -36,16 +36,14 @@ typedef struct  s_data
 // ---------------- Verify & Parsing---------------------- 
 */
 
-int open_fd(char *file);
-int check_row_map(char *line);
-void check_extension(char *str1, char *str2);
-int check_player(char c, const char *array);
-int process_input(char *file, t_data *data);
-char *check_store_path_color(int fd, t_data *data);
-void check_store_path(char *line, char **str, t_data *data);
-void check_store_color(char *line, unsigned char **str, t_data *data);
-void check_store_map(int fd, char **line, t_data *data);
-void check_map_validity(char **map, t_data *data);
+int		open_fd(char *file);
+int		check_row_map(char *line);
+void	check_extension(char *str1, char *str2);
+int		check_player(char c, const char *array);
+int		process_input(char *file, t_data *data);
+char	*process_path_color(int fd, t_data *data);
+void	check_store_map(int fd, char **line, t_data *data);
+void	check_map_validity( t_data *data);
 
 /*
 // ---------------- Free ---------------------- 
