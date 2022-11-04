@@ -22,6 +22,10 @@ static void	row_verification(char **map, int i)
 	}
 }
 
+// the middle section verrifies first the first element, 
+// then the entire middle section and lastly the final elem of the row
+// -------------------------------------------------------------------
+
 static void	middle_section(char **map, int i, t_data *data)
 {
 	int	j;
@@ -37,7 +41,7 @@ static void	middle_section(char **map, int i, t_data *data)
 				map[i - 1][j] == ' ' || map[i + 1][j] == ' ' ||
 				map[i - 1][j - 1] == ' ' || map[i - 1][j + 1] == ' ' ||
 				map[i + 1][j - 1] == ' ' || map[i + 1][j + 1] == ' ')
-				error_exit_input("invalid 1 map");
+				error_exit_input("invalid map");
 			if (check_player(map[i][j], MAP_PLAYER) == 1)
 			{
 				if (data->player == 1)

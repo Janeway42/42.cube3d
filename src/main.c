@@ -46,7 +46,7 @@ void	check_extension(char *str1, char *str2)
 	split = ft_split(str1, '.');
 	if (split == NULL)
 		error_exit_input("failed split");
-	if (split[1] == NULL || ft_strcmp(split[1], str2) != 0)
+	if (!split[1] || ft_strcmp(split[1], str2) != 0)
 		error_exit_input("wrong extension");
 	free(split);
 }

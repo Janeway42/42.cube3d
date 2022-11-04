@@ -54,16 +54,13 @@ static void	process_path(char *line, char **str, t_data *data)
 	int		fd;
 
 	split = ft_split(line, ' ');
-
-	// this needs to be uncommented - unable to test with it active (need valid jpeg)
-	fd = open(split[1], O_RDONLY); // if split[1] == NULL -> fd == -1 
-	// if (fd == -1)
-	// {
-	// 	free_double(split);
-	// 	error_exit_input("invalid path");
-	// }
-
-	check_extension(split[1], "jpeg");
+	fd = open(split[1], O_RDONLY);
+	if (fd == -1)
+	{
+		free_double(split);
+		error_exit_input("invalid path");
+	}
+	check_extension(split[1], "png");
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
 	str[0] = ft_strdup(split[0]);
@@ -105,7 +102,7 @@ char	*process_path_color(int fd, t_data *data)
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
-		if (line[j] != '\n')
+		if (line[j] != '\0')
 			process_distribution(line, j, data);
 		i++;
 	}

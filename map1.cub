@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO /Users/cpopa/Downloads/vela.png
+SO /Users/cpopa/Downloads/vela.png
+WE /Users/cpopa/Downloads/vela.png
+EA /Users/cpopa/Downloads/vela.png
 
 F 220,100,0
 C 225,30,0
@@ -13,3 +13,4 @@ C 225,30,0
 111111111011
 10000001111
 111111111
+

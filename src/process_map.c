@@ -57,24 +57,29 @@ static void	copy_row(int i, char *line, t_data *data)
 	}
 }
 
+// function takes the map in three batches: first line, middle section and last line
+// it first checks whether the line is a map line containing { ,0,1,N,S,E,W}
+// and then it copies to data->map
+// first line gets verrified in process_input.c/find_map_start(int fd, t_data *data)
+// ---------------------------------------------------------------------------------
+
 void	check_store_map(int fd, char **line, t_data *data)
 {
 	int	i;
 
 	i = 0;
 	allocate_memory_map(data);
-
-	copy_row(i, *line, data); // first line
+	copy_row(i, *line, data);
 	i++;
-	while (get_next_line(fd, line) > 0) // middle of the map 
+	while (get_next_line(fd, line) > 0 && i < data->map_rows)
 	{
 		if (i < data->map_rows && check_row_map(*line) == 1)
-			error_exit_input("invalid map");
+			error_exit_input("invalid map row");
 		copy_row(i, *line, data);
 		i++;
 	}
-	if (check_row_map(*line) == 1) // last line    /// i < data->rows ??//
-		error_exit_input("invalid input");
+	if (check_row_map(*line) == 1)
+		error_exit_input("invalid map row");
 	copy_row(i, *line, data);
 
 	print_map(data); // remove ----------------------------
