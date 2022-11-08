@@ -96,6 +96,8 @@ char	*process_path_color(int fd, t_data *data)
 	int		j;
 
 	i = 0;
+
+
 	while (i < data->map_start)
 	{
 		get_next_line(fd, &line);

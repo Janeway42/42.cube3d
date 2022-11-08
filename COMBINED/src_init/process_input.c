@@ -40,7 +40,8 @@ static void	find_map_start(int fd, t_data *data)
 		count_line(line, data);
 	if (line[i] != '\0')
 		count_line(line, data);
-	printf("lines: %d\n", data->map_rows);
+	printf("rows: %d\n", data->map_rows);
+	printf("col: %d\n", data->map_columns);
 }
 
 //-------------------------------------------------------
@@ -58,6 +59,6 @@ int	process_input(char *file, t_data *data)
 	check_store_map(fd, &line, data);
 	close(fd);
 	check_map_validity(data);
-	free_memory(data);
+	// free_memory(data);
 	return (0);
 }

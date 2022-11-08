@@ -26,8 +26,9 @@ typedef struct  s_data
 
     int nr_paths;
     int nr_colors;
-    char player_direction;
     int player;
+	double player_pos[2];
+    int player_direction;
     int map_start;
     int map_rows;
     int map_columns;
