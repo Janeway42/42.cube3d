@@ -1,6 +1,6 @@
-#include "render.h"
+#include "../includes/render.h"
 
-void	draw_wall_col(t_data *data, unsigned int x, unsigned int wall_height)
+void	draw_wall_col(t_info *data, unsigned int x, unsigned int wall_height)
 {
 	unsigned int	top;
 	unsigned int	bottom;
@@ -22,7 +22,7 @@ void	draw_wall_col(t_data *data, unsigned int x, unsigned int wall_height)
 	draw_floor_ceiling(data, top, bottom, x);
 }
 
-void	draw_floor_ceiling(t_data *data, unsigned int top, unsigned int bottom,
+void	draw_floor_ceiling(t_info *data, unsigned int top, unsigned int bottom,
 			unsigned int x)
 {
 	t_coor	ceilingtop;
@@ -42,7 +42,7 @@ void	draw_floor_ceiling(t_data *data, unsigned int top, unsigned int bottom,
 	draw_line(floortop, floorbottom, data->img, data->floor_colour);
 }
 
-void	create_projection(t_data *data)
+void	create_projection(t_info *data)
 {
 	unsigned int	i;
 	double			angle;
@@ -67,41 +67,41 @@ void	create_projection(t_data *data)
 	}
 }
 
-void	draw_wall(t_data *data, unsigned int x, unsigned int wall_height, double wallX)
-{	
-	unsigned int	top;
-	unsigned int	bottom;
-	double			step;
+// void	draw_wall(t_info *data, unsigned int x, unsigned int wall_height, double wallX)
+// {	
+// 	unsigned int	top;
+// 	unsigned int	bottom;
+// 	double			step;
 
-	int draw_start = -wall_height /2 + data->img->height /2;
-	if(draw_start < 0) 
-		draw_start = 0;
-	int draw_end = wall_height /2 + data->img->height /2;
-	if (draw_end >= data->img->height)
-		draw_end = data->img->height - 1;
-	step = data->img->height / wall_height;
-	int texX = (int)(wallX * (double)(data->img->height));
-	if (wall_height <= data->img->height)
-	{
+// 	int draw_start = -wall_height /2 + data->img->height /2;
+// 	if(draw_start < 0) 
+// 		draw_start = 0;
+// 	int draw_end = wall_height /2 + data->img->height /2;
+// 	if (draw_end >= data->img->height)
+// 		draw_end = data->img->height - 1;
+// 	step = data->img->height / wall_height;
+// 	int texX = (int)(wallX * (double)(data->img->height));
+// 	if (wall_height <= data->img->height)
+// 	{
 		
-	}
-	else
-	{
+// 	}
+// 	else
+// 	{
 
-	}
+// 	}
 
-}
+// }
 
-unsigned int get_colour_png(mlx_texture_t* png, unsigned int x, unsigned y)
-{
-	unsigned int offset;
-	unsigned char	*dst;
+// unsigned int get_colour_png(mlx_texture_t* png, unsigned int x, unsigned y)
+// {
+// 	unsigned int offset;
+// 	unsigned char	*dst;
 
-	if(x < png->width && y < png->height)
-	{
-		offset = y * (png->width * 4) + x * 4;
-		dst = png->pixels + offset;
-		return (*(unsigned int*) dst);
-	}
-	return (0X00000000);
-}
+// 	if(x < png->width && y < png->height)
+// 	{
+// 		offset = y * (png->width * 4) + x * 4;
+// 		dst = png->pixels + offset;
+// 		return (*(unsigned int*) dst);
+// 	}
+// 	return (0X00000000);
+// }

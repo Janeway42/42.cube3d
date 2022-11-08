@@ -1,6 +1,6 @@
-#include "render.h"
+#include "../includes/render.h"
 
-int	init_minimap(t_data *gamedata)
+int	init_minimap(t_info *gamedata)
 {
 	unsigned int	miniwidth;
 	unsigned int	miniheight;
@@ -54,11 +54,11 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 				headingline)), img, WHITE);
 }
 
-void	draw_map(t_data *data)
+void	draw_map(t_info *data)
 {
 	unsigned int	pixelsize;
-	int				y;
-	int				x;
+	unsigned int	y;
+	unsigned int	x;
 
 	pixelsize = (unsigned int)(data->imgmini->width / data->map_width);
 	y = 0;
@@ -79,10 +79,10 @@ void	draw_map(t_data *data)
 	}
 }
 
-void	draw_wall(mlx_image_t *img, int x, int y, unsigned int pixelsize)
+void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pixelsize)
 {
-	int	wall_x;
-	int	wall_y;
+	unsigned int	wall_x;
+	unsigned int	wall_y;
 
 	wall_x = x;
 	wall_y = y;
@@ -98,10 +98,10 @@ void	draw_wall(mlx_image_t *img, int x, int y, unsigned int pixelsize)
 	}
 }
 
-void	draw_floor(mlx_image_t *img, int x, int y, unsigned int pixelsize)
+void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pixelsize)
 {
-	int	floor_x;
-	int	floor_y;
+	unsigned int	floor_x;
+	unsigned int	floor_y;
 
 	floor_x = x;
 	floor_y = y;

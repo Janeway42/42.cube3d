@@ -1,4 +1,4 @@
-#include "render.h"
+#include "../includes/render.h"
 
 //converting the t_vector to t_coor datatype 
 //converting the x and y double to int.

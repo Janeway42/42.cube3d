@@ -24,7 +24,7 @@ typedef struct s_player
 	unsigned int	fov;
 }				t_player;
 
-typedef struct s_data
+typedef struct s_info
 {
 	t_player		player;
 	mlx_t			*mlx;
@@ -38,7 +38,7 @@ typedef struct s_data
 	unsigned int	map_height;
 	unsigned int	mini_pixelsize;
 	mlx_image_t		*imgmini;
-}				t_data;
+}				t_info;
 
 typedef struct s_dda
 {

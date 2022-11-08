@@ -42,11 +42,13 @@ static void	initialize_data(t_data *data)
 void	check_extension(char *str1, char *str2)
 {
 	char	**split;
+	int		size;
 
+	size = ft_strlen(str2);
 	split = ft_split(str1, '.');
 	if (split == NULL)
 		error_exit_input("failed split");
-	if (!split[1] || ft_strcmp(split[1], str2) != 0)
+	if (!split[1] || ft_strncmp(split[1], str2, size) != 0)
 		error_exit_input("wrong extension");
 	free(split);
 }

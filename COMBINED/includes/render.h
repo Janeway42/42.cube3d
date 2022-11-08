@@ -61,27 +61,27 @@ void			clear_image(mlx_image_t *img);
 //----------------------------------------
 // Map2d functions (2d minimap)
 //----------------------------------------
-int				init_minimap(t_data *gamedata);
+int				init_minimap(t_info *gamedata);
 void			draw_player(mlx_image_t *img, t_player player,
 					unsigned int pixelsize);
-void			draw_map(t_data *data);
-void			draw_wall(mlx_image_t *img, int x, int y,
+void			draw_map(t_info *data);
+void			draw_wall(mlx_image_t *img, unsigned int x, unsigned int y,
 					unsigned int pixelsize);
-void			draw_floor(mlx_image_t *img, int x, int y,
+void			draw_floor(mlx_image_t *img, unsigned int x, unsigned int y,
 					unsigned int pixelsize);
 void			draw_ray(mlx_image_t *img, t_vector ray, t_vector playerpos,
 					unsigned int pixelsize);
 t_vector		calc_ray_vector(double degree, double distance);
-void			draw_viewing_cone(t_data *data);
+void			draw_viewing_cone(t_info *data);
 
 //----------------------------------------
 // Projection 3d functions 
 //----------------------------------------
 
-void			create_projection(t_data *data);
-void			draw_wall_col(t_data *data, unsigned int x,
+void			create_projection(t_info *data);
+void			draw_wall_col(t_info *data, unsigned int x,
 					unsigned int wall_height);
-void			draw_floor_ceiling(t_data *data, unsigned int top,
+void			draw_floor_ceiling(t_info *data, unsigned int top,
 					unsigned int bottom, unsigned int x);
 // void			draw_wall(t_data *data, unsigned int x, unsigned int wall_height);
 // unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);

@@ -1,4 +1,4 @@
-#include "render.h"
+#include "../includes/render.h"
 
 double	ft_absf(double number)
 {
@@ -7,7 +7,7 @@ double	ft_absf(double number)
 	return (number);
 }
 
-void	init_dda(t_dda_vars *vars, t_dda *result, t_vector *pos, t_vector *ray)
+void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
 {
 	if (ray->x < 0)
 	{
@@ -75,12 +75,12 @@ t_dda	apply_dda(t_vector playerpos, t_vector ray, double angle, char **map)
 	dda_vars.map_y = (int) playerpos.y;
 	dda_vars.delta_dist_x = ft_absf(1 / ray.x);
 	dda_vars.delta_dist_y = ft_absf(1 / ray.y);
-	init_dda(&dda_vars, &result, &playerpos, &ray);
+	init_dda(&dda_vars, &playerpos, &ray);
 	start_dda(&dda_vars, &result, angle, map);
 	if (result.side == 0 || result.side == 2)
-		result.hitpos = playerpos.y + result.perp_dist * ray.y;
+		result.hitpos = playerpos.y + result.distance * ray.y;
 	else
-		result.hitpos = playerpos.x + result.perp_dist * ray.x;
+		result.hitpos = playerpos.x + result.distance * ray.x;
 	result.hitpos -= floorf(result.hitpos);
 	return (result);
 }

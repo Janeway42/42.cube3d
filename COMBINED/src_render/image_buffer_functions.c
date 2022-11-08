@@ -1,4 +1,4 @@
-#include "render.h"
+#include "../includes/render.h"
 
 void	draw_pixel(mlx_image_t *img, unsigned int x, unsigned int y
 			, unsigned int colour)

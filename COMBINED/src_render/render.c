@@ -1,14 +1,12 @@
-#include "../includes/initialize.h"
 #include "../includes/render.h"
-#include "../includes/render_struct.h"
 
 void	hook(void *param)
 {
-	t_data		*data;
+	t_info		*data;
 	t_vector	movement_vector;
 	t_dda		result;
 
-	data = (t_data *) param;
+	data = (t_info *) param;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
@@ -47,7 +45,7 @@ void	hook(void *param)
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
 }
 
-static int	init_gamestate(t_data *data, t_data *gamedata, mlx_t *mlx)
+static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 {
 	gamedata->mlx = mlx;
 	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
@@ -61,21 +59,21 @@ static int	init_gamestate(t_data *data, t_data *gamedata, mlx_t *mlx)
 	gamedata->player.speed = 5;
 	gamedata->player.fov = 90;
 	gamedata->rotation_angle = 3.0;
-	gamedata->map = create_map();
+	gamedata->map = data->map;
 	if (gamedata->map == NULL)
 		return (-1);
-	gamedata->map_width = data->map_width;
-	gamedata->map_height = data->map_height;
+	gamedata->map_width = data->map_columns;
+	gamedata->map_height = data->map_rows;
 	// create colors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	gamedata->ceiling_colour = LIGHTSKYBLUE;
-	gamedata->floor_colour = GREEN;
+	gamedata->ceiling_colour = create_colour((unsigned char)data->celeing[1], (unsigned char)data->celeing[2], (unsigned char)data->celeing[3], (unsigned char)"FF");
+	gamedata->floor_colour = create_colour((unsigned char)data->floor[1], (unsigned char)data->floor[2], (unsigned char)data->floor[3], (unsigned char)"FF");;
 	return (1);
 }
 
 void render(t_data *data)
 {
 	mlx_t	*mlx;
-	t_data	gamedata;
+	t_info	gamedata;
 
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);//create the window and set resize to true
 	if (!mlx) //exit if failure to initialize mlx instance

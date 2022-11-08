@@ -6,11 +6,11 @@
 /*   By: hman <hman@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:33:41 by hman          #+#    #+#                 */
-/*   Updated: 2022/11/07 15:44:58 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/08 12:36:53 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "../includes/render.h"
 
 /*
 **	this function will implement the bresenham algorithm for drawing a line
