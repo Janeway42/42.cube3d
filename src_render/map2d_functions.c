@@ -79,7 +79,8 @@ void	draw_map(t_info *data)
 	}
 }
 
-void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pixelsize)
+void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y
+			, unsigned int pixelsize)
 {
 	unsigned int	wall_x;
 	unsigned int	wall_y;
@@ -98,7 +99,8 @@ void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pi
 	}
 }
 
-void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pixelsize)
+void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y
+		, unsigned int pixelsize)
 {
 	unsigned int	floor_x;
 	unsigned int	floor_y;

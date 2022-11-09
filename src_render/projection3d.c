@@ -100,7 +100,7 @@ void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda
 			colour = get_colour_png(texture, (unsigned int) ((1.0- result->hitpos) * texture->width), (unsigned int) (tex_start + y * step));
 		else
 			colour = get_colour_png(texture, (unsigned int) (result->hitpos * texture->width), (unsigned int) (tex_start + y * step));
-		colour = grading_colour(colour, 1.0 * wall_height / height);
+		//colour = grading_colour(colour, 1.0 * wall_height / height);
 		draw_pixel(data->img, x, y + top, colour);
 	}
 	draw_floor_ceiling(data, top, bottom, x);

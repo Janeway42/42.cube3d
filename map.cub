@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture.png
-SO ./path_to_the_south_texture.png
-WE ./path_to_the_west_texture.png
-EA ./path_to_the_east_texture.png
+NO ./images/brick.png 
+SO ./images/logo.png
+WE ./images/brick.png
+EA ./images/logo.png
 
 F 255,0,0
 C 0,255,0
