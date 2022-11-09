@@ -30,10 +30,10 @@ static void	initialize_data(t_data *data)
 	data->map_columns = 0;
 	data->player = 0;
 	data->player_direction = -1;
-	data->north = (char **)assign_memory();
-	data->south = (char **)assign_memory();
-	data->east = (char **)assign_memory();
-	data->west = (char **)assign_memory();
+	data->north = (char *)assign_memory();
+	data->south = (char *)assign_memory();
+	data->east = (char *)assign_memory();
+	data->west = (char *)assign_memory();
 }
 
 // -------------------------------------------------------------

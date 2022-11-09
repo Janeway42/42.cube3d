@@ -35,9 +35,9 @@ static void process_color(char *line, unsigned int array[], t_data *data)
 	array[0] = verify_color_elem(split_digits[0]);
 	printf("array[0] %i\n", array[0]); // remove --------------------------------
 	array[1] = verify_color_elem(split_digits[1]);
-	printf("array[1] %i\n", array[0]); // remove --------------------------------
+	printf("array[1] %i\n", array[1]); // remove --------------------------------
 	array[2] = verify_color_elem(split_digits[2]);
-	printf("array[2] %i\n", array[0]); // remove --------------------------------
+	printf("array[2] %i\n", array[2]); // remove --------------------------------
 	free_double(split);
 	free_double(split_digits);
 	data->nr_colors++;
@@ -46,7 +46,7 @@ static void process_color(char *line, unsigned int array[], t_data *data)
 // checks if a path is valid and if so storres it - if too many paths error 
 //-----------------------------------------------------------------------------
 
-static void	process_path(char *line, char **str, t_data *data)
+static void	process_path(char *line, char *str, t_data *data)
 {
 	char	**split;
 	int		fd;
@@ -61,10 +61,8 @@ static void	process_path(char *line, char **str, t_data *data)
 	check_extension(split[1], "png");
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
-	str[0] = ft_strdup(split[0]);
-	printf("str %s\n", str[0]); // remove --------------------------------
-	str[1] = ft_strdup(split[1]);
-	printf("str %s\n", str[1]); // remove --------------------------------
+	str = ft_strdup(split[1]);
+	printf("str %s\n", str); // remove --------------------------------
 	free_double(split);
 	data->nr_paths++;
 }

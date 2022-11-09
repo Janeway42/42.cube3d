@@ -15,10 +15,16 @@
 
 typedef struct  s_data
 {
-    char **north;
-    char **south;
-    char **east;
-    char **west;
+    // char **north;
+    // char **south;
+    // char **east;
+    // char **west;
+
+	char *north;
+    char *south;
+    char *east;
+    char *west;
+
 	unsigned int ceiling[3];
 	unsigned int floor[3];
 
