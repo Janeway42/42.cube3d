@@ -40,8 +40,8 @@ static void	find_map_start(int fd, t_data *data)
 		count_line(line, data);
 	if (line[i] != '\0')
 		count_line(line, data);
-	printf("rows: %d\n", data->map_rows);
-	printf("col: %d\n", data->map_columns);
+	printf("rows: %d\n", data->map_rows); // remove --------------------------------
+	printf("col: %d\n", data->map_columns); // remove --------------------------------
 }
 
 //-------------------------------------------------------
