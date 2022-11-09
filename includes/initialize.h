@@ -15,11 +15,6 @@
 
 typedef struct  s_data
 {
-    // char **north;
-    // char **south;
-    // char **east;
-    // char **west;
-
 	char *north;
     char *south;
     char *east;

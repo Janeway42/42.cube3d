@@ -56,7 +56,7 @@ static void	process_path(char *line, char *str, t_data *data)
 	// if (fd == -1)
 	// {
 	// 	free_double(split);
-	// 	error_exit_input("invalid path");
+	// 	error_exit_input("invalid path");  // uncomment !!!!!!!!!!!!!!!!!!!!!!
 	// }
 	check_extension(split[1], "png");
 	if (data->nr_paths > 3)

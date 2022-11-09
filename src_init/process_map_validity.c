@@ -26,6 +26,23 @@ static void	row_verification(char **map, int i)
 // then the entire middle section and lastly the final elem of the row
 // -------------------------------------------------------------------
 
+static void	process_player(int i, int j, t_data *data)
+{
+	if (data->player == 1)
+		error_exit_input("invalid map");
+	data->player = 1;
+	if(data->map[i][j] == 'N')
+		data->player_direction = 90;
+	if (data->map[i][j] == 'S')
+		data->player_direction = 270;
+	if (data->map[i][j] == 'E')
+		data->player_direction = 0;
+	if (data->map[i][j] == 'W')
+		data->player_direction = 180;
+	data->player_pos[0] = i + 0.5;
+	data->player_pos[1] = j + 0.5;
+}
+
 static void	middle_section(char **map, int i, t_data *data)
 {
 	int	j;
@@ -42,30 +59,8 @@ static void	middle_section(char **map, int i, t_data *data)
 				map[i - 1][j - 1] == ' ' || map[i - 1][j + 1] == ' ' ||
 				map[i + 1][j - 1] == ' ' || map[i + 1][j + 1] == ' ')
 				error_exit_input("invalid map");
-			// if (check_player(map[i][j], MAP_PLAYER) == 1)
-			// {
-			// 	if (data->player == 1)
-			// 		error_exit_input("invalid map");
-			// 	data->player = 1;
-			// 	data->player_direction = map[i][j];
-			// }
-
 			if (check_player(map[i][j], MAP_PLAYER) == 1)
-			{
-				if (data->player == 1)
-					error_exit_input("invalid map");
-				data->player = 1;
-				if(map[i][j] == 'N')
-					data->player_direction = 90;
-				if (map[i][j] == 'S')
-					data->player_direction = 270;
-				if (map[i][j] == 'E')
-					data->player_direction = 0;
-				if (map[i][j] == 'W')
-					data->player_direction = 180;
-				data->player_pos[0] = i + 0.5;
-				data->player_pos[1] = j + 0.5;
-			}
+				process_player(i, j, data);
 		}
 		j++;
 	}
