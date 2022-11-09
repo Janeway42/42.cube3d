@@ -46,7 +46,7 @@ static void process_color(char *line, unsigned int array[], t_data *data)
 // checks if a path is valid and if so storres it - if too many paths error 
 //-----------------------------------------------------------------------------
 
-static void	process_path(char *line, char *str, t_data *data)
+static void	process_path(char *line, char **str, t_data *data)
 {
 	char	**split;
 	int		fd;
@@ -61,8 +61,8 @@ static void	process_path(char *line, char *str, t_data *data)
 	check_extension(split[1], "png");
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
-	str = ft_strdup(split[1]);
-	printf("str %s\n", str); // remove --------------------------------
+	*str = ft_strdup(split[1]);
+	printf("str %s\n", *str); // remove --------------------------------
 	free_double(split);
 	data->nr_paths++;
 }
@@ -72,13 +72,13 @@ static void	process_path(char *line, char *str, t_data *data)
 static void	process_distribution(char *line, int j, t_data *data)
 {
 	if (line[j] == 'N' && line[j + 1] == 'O')
-		process_path(line, data->north, data);
+		process_path(line, &data->north, data);
 	if (line[j] == 'S' && line[j + 1] == 'O')
-		process_path(line, data->south, data);
+		process_path(line, &data->south, data);
 	if (line[j] == 'E' && line[j + 1] == 'A')
-		process_path(line, data->east, data);
+		process_path(line, &data->east, data);
 	if (line[j] == 'W' && line[j + 1] == 'E')
-		process_path(line, data->west, data);
+		process_path(line, &data->west, data);
 	if (line[j] == 'F')
 		process_color(line, data->floor, data);
 	if (line[j] == 'C')

@@ -3,8 +3,8 @@ SO ./images/logo.png
 WE ./images/brick.png
 EA ./images/logo.png
 
-F 255,0,0
-C 255,0,255
+F 0,255,0
+C 0,0,255 
 
         1111111111111111111111111
         1000000000110000000000001
