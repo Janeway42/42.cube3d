@@ -34,8 +34,6 @@ static void	initialize_data(t_data *data)
 	data->south = (char **)assign_memory();
 	data->east = (char **)assign_memory();
 	data->west = (char **)assign_memory();
-	data->floor = assign_memory();
-	data->celeing = assign_memory();
 }
 
 // -------------------------------------------------------------

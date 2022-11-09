@@ -51,8 +51,8 @@ static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (!gamedata->img)
 		return (-1);
-	gamedata->player.position.x = data->player_pos[1];  //2.5;
-	gamedata->player.position.y = data->player_pos[0];   // 2.5;
+	gamedata->player.position.x = data->player_pos[1];
+	gamedata->player.position.y = data->player_pos[0];
 	gamedata->player.heading_degree = data->player_direction;  // S: 270 E: 0 W: 180 N: 90
 	gamedata->player.heading_vector.x = 1.0;
 	gamedata->player.heading_vector.y = 0.0;
@@ -66,9 +66,8 @@ static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->map_height = data->map_rows;
 	gamedata->texture[0] = mlx_load_png("images/brick.png");
 	gamedata->texture[1] = mlx_load_png("images/logo.png");
-	// create colors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	gamedata->ceiling_colour = create_colour((unsigned char)data->celeing[1], (unsigned char)data->celeing[2], (unsigned char)data->celeing[3], (unsigned char)"FF");
-	gamedata->floor_colour = create_colour((unsigned char)data->floor[1], (unsigned char)data->floor[2], (unsigned char)data->floor[3], (unsigned char)"FF");;
+	gamedata->ceiling_colour = create_colour((unsigned char)data->ceiling[0], (unsigned char)data->ceiling[1], (unsigned char)data->ceiling[2], (unsigned char)"FF");
+	gamedata->floor_colour = create_colour((unsigned char)data->floor[0], (unsigned char)data->floor[1], (unsigned char)data->floor[2], (unsigned char)"FF");;
 	return (1);
 }
 

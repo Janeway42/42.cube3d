@@ -59,6 +59,5 @@ int	process_input(char *file, t_data *data)
 	check_store_map(fd, &line, data);
 	close(fd);
 	check_map_validity(data);
-	// free_memory(data);
 	return (0);
 }
