@@ -13,7 +13,7 @@ void	free_double(char **str)
 	free(str);
 }
 
-void	free_memory(t_data *data)
+void	free_map(t_data *data)
 {
 	int	i;
 
@@ -27,16 +27,4 @@ void	free_memory(t_data *data)
 		}
 		free(data->map);
 	}
-	if (data->north)
-		free_double(data->north);
-	if (data->south)
-		free_double(data->south);
-	if (data->east)
-		free_double(data->east);
-	if (data->west)
-		free_double(data->west);
-	if (data->floor)
-		free_double((char **)data->floor);
-	if (data->celeing)
-		free_double((char **)data->celeing);
 }

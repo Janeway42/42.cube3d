@@ -51,8 +51,8 @@ static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (!gamedata->img)
 		return (-1);
-	gamedata->player.position.x = data->player_pos[1];  //2.5;
-	gamedata->player.position.y = data->player_pos[0];   // 2.5;
+	gamedata->player.position.x = data->player_pos[1];
+	gamedata->player.position.y = data->player_pos[0];
 	gamedata->player.heading_degree = data->player_direction;  // S: 270 E: 0 W: 180 N: 90
 	gamedata->player.heading_vector.x = 1.0;
 	gamedata->player.heading_vector.y = 0.0;

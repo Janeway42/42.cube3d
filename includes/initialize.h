@@ -19,8 +19,8 @@ typedef struct  s_data
     char **south;
     char **east;
     char **west;
-    unsigned char **floor;
-    unsigned char **celeing;
+	unsigned int ceiling[3];
+	unsigned int floor[3];
 
     char **map;  // map  - 2d array   
 
@@ -58,7 +58,7 @@ void render(t_data *data);
 */
 
 void free_double(char **str);
-void free_memory(t_data *data);
+void free_map(t_data *data);
 
 /*
 // ---------------- Error ---------------------- 

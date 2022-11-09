@@ -1,21 +1,22 @@
 #include "../includes/initialize.h"
 
-static void	check_rgb(unsigned char **array)
+static unsigned int verify_color_elem(char *str)
 {
-	int	nr;
+	unsigned int	temp;
+	char			*temp_str;
 
-	nr = ft_atoi((char *)array[1]);
-	if (nr < 0 || nr > 255)
+	temp = (unsigned int)ft_atoi(str);
+	temp_str = ft_itoa(temp);
+	if (ft_strncmp(temp_str, str, ft_strlen(str) != 0))
+		error_exit_input("wrong color input");
+	if (temp < 0 || temp > 255)
 		error_exit_input("invalid color");
-	nr = ft_atoi((char *)array[2]);
-	if (nr < 0 || nr > 255)
-		error_exit_input("invalid color");
-	nr = ft_atoi((char *)array[3]);
-	if (nr < 0 || nr > 255)
-		error_exit_input("invalid color");
+	free(temp_str);
+	return (temp);
 }
 
-static void	process_color(char *line, unsigned char **str, t_data *data)
+// static void	process_color(char *line, unsigned char **str, t_data *data)
+static void process_color(char *line, unsigned int array[], t_data *data)
 {
 	char	**split;
 	char	**split_digits;
@@ -30,18 +31,15 @@ static void	process_color(char *line, unsigned char **str, t_data *data)
 		error_exit_input("failed ft_split");
 	}
 	if (data->nr_colors > 1)
-		error_exit_input("too many colors");
-	str[0] = (unsigned char *)ft_strdup(split[0]);
-	printf("str[0] %s\n", str[0]); // remove --------------------------------
-	str[1] = (unsigned char *)ft_strdup(split_digits[0]);
-	printf("str[1] %s\n", str[1]); // remove --------------------------------
-	str[2] = (unsigned char *)ft_strdup(split_digits[1]);
-	printf("str[2] %s\n", str[2]); // remove --------------------------------
-	str[3] = (unsigned char *)ft_strdup(split_digits[2]);
-	printf("str[3] %s\n", str[3]); // remove --------------------------------
+		error_exit_input("too many colors");  /// does it need to stay here/ 
+	array[0] = verify_color_elem(split_digits[0]);
+	printf("array[0] %i\n", array[0]); // remove --------------------------------
+	array[1] = verify_color_elem(split_digits[1]);
+	printf("array[1] %i\n", array[0]); // remove --------------------------------
+	array[2] = verify_color_elem(split_digits[2]);
+	printf("array[2] %i\n", array[0]); // remove --------------------------------
 	free_double(split);
 	free_double(split_digits);
-	check_rgb(str);
 	data->nr_colors++;
 }
 
@@ -86,7 +84,7 @@ static void	process_distribution(char *line, int j, t_data *data)
 	if (line[j] == 'F')
 		process_color(line, data->floor, data);
 	if (line[j] == 'C')
-		process_color(line, data->celeing, data);
+		process_color(line, data->ceiling, data);
 }
 
 char	*process_path_color(int fd, t_data *data)
