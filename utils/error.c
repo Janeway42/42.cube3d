@@ -1,4 +1,4 @@
-#include "../includes/cube3d.h"
+#include "../includes/initialize.h"
 
 void	error_exit_input(char *str)
 {

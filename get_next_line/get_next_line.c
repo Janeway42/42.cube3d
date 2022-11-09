@@ -8,7 +8,7 @@ static char	*create_line(char **line, char *keep, char *buff)
 {
 	char	*leftover;
 
-	keep = ft_strjoin(keep, buff);
+	keep = ft_strjoin_str(keep, buff);
 	*line = ft_line(keep, '\n');
 	leftover = ft_leftover(keep, '\n');
 	free(keep);

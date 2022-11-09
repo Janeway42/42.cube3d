@@ -76,9 +76,9 @@ void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda
 	mlx_texture_t *texture;
 
 	if(result->side == 0 || result->side == 2)
-		texture = data->texture2;
+		texture = data->texture[0];
 	else
-		texture = data->texture1;
+		texture = data->texture[1];
 	height = data->img->height;
 	if (wall_height > height)
 	{

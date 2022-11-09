@@ -29,8 +29,7 @@ typedef struct s_info
 	t_player		player;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_texture_t	*texture1;
-	mlx_texture_t	*texture2;
+	mlx_texture_t	*texture[4];
 	char			**map;
 	double			rotation_angle;
 	unsigned int	floor_colour;

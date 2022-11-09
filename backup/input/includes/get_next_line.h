@@ -15,7 +15,7 @@
 # endif
 
 int		get_next_line(int fd, char **line);
-char	*ft_strjoin_str(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_line(const char *str, char c);
 char	*ft_leftover(const char *str, char c);
 int		ft_strlength(const char *str, char c);

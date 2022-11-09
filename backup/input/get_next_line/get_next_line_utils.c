@@ -16,7 +16,7 @@ static int	copy_string(char **dest, const char *src, int n)
 	return (i);
 }
 
-char	*ft_strjoin_str(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
 	int		size_s1;

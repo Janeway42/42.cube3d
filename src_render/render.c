@@ -64,8 +64,8 @@ static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 		return (-1);
 	gamedata->map_width = data->map_columns;
 	gamedata->map_height = data->map_rows;
-	gamedata->texture1 = mlx_load_png("images/brick.png");
-	gamedata->texture2 = mlx_load_png("images/logo.png");
+	gamedata->texture[0] = mlx_load_png("images/brick.png");
+	gamedata->texture[1] = mlx_load_png("images/logo.png");
 	// create colors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	gamedata->ceiling_colour = create_colour((unsigned char)data->celeing[1], (unsigned char)data->celeing[2], (unsigned char)data->celeing[3], (unsigned char)"FF");
 	gamedata->floor_colour = create_colour((unsigned char)data->floor[1], (unsigned char)data->floor[2], (unsigned char)data->floor[3], (unsigned char)"FF");;
