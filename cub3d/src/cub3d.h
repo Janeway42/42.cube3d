@@ -61,7 +61,7 @@ void			draw_player(mlx_image_t *img, t_player player,
 void			draw_map(t_data *data);
 void			draw_wall(mlx_image_t *img, int x, int y,
 					unsigned int pixelsize);
-void			draw_floor(mlx_image_t *img, int x, int y,
+void			draw_floor(mlx_image_t *img, unsigned int x, unsigned int y,
 					unsigned int pixelsize);
 void			draw_ray(mlx_image_t *img, t_vector ray, t_vector playerpos,
 					unsigned int pixelsize);
@@ -77,6 +77,8 @@ void			draw_wall_col(t_data *data, unsigned int x,
 					unsigned int wall_height);
 void			draw_floor_ceiling(t_data *data, unsigned int top,
 					unsigned int bottom, unsigned int x);
-// void			draw_wall(t_data *data, unsigned int x, unsigned int wall_height);
-// unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
+void			draw_tex_wall(t_data *data, unsigned int x, unsigned int wall_height, t_dda *result);
+unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
+unsigned char	get_colour_value(unsigned int colour, char colourpart);
+unsigned int	grading_colour(unsigned int colour, double percentage);
 #endif

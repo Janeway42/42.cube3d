@@ -48,8 +48,8 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 		++y;
 	}
 	headingline = rotate_vector(player.heading_vector, player.heading_degree);
-	headingline.x *= 10;
-	headingline.y *= 10;
+	headingline.x *= 30;
+	headingline.y *= 30;
 	draw_line(vec_to_coor(playerpos), vec_to_coor(add_vectors(playerpos,
 				headingline)), img, WHITE);
 }
@@ -57,8 +57,8 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 void	draw_map(t_data *data)
 {
 	unsigned int	pixelsize;
-	int				y;
-	int				x;
+	unsigned int				y;
+	unsigned int				x;
 
 	pixelsize = (unsigned int)(data->imgmini->width / data->map_width);
 	y = 0;
@@ -81,8 +81,8 @@ void	draw_map(t_data *data)
 
 void	draw_wall(mlx_image_t *img, int x, int y, unsigned int pixelsize)
 {
-	int	wall_x;
-	int	wall_y;
+	unsigned int	wall_x;
+	unsigned int	wall_y;
 
 	wall_x = x;
 	wall_y = y;
@@ -98,10 +98,10 @@ void	draw_wall(mlx_image_t *img, int x, int y, unsigned int pixelsize)
 	}
 }
 
-void	draw_floor(mlx_image_t *img, int x, int y, unsigned int pixelsize)
+void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int pixelsize)
 {
-	int	floor_x;
-	int	floor_y;
+	unsigned int	floor_x;
+	unsigned int	floor_y;
 
 	floor_x = x;
 	floor_y = y;

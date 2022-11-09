@@ -70,7 +70,7 @@ void	draw_map(t_info *data)
 			if (data->map[y][x] == '1')
 				draw_wall(data->imgmini, x * pixelsize, y * pixelsize,
 					pixelsize);
-			else if (data->map[y][x] == '0' || data->map[y][x] == ' ')
+			else
 				draw_floor(data->imgmini, x * pixelsize, y * pixelsize,
 					pixelsize);
 			++x;

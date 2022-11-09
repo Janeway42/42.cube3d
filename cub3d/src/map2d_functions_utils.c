@@ -16,7 +16,6 @@ t_vector	calc_ray_vector(double degree, double distance)
 void	draw_viewing_cone(t_data *data)
 {
 	double		i;
-	double		current_distance;
 	t_dda		result;
 	t_vector	current_heading;
 	t_vector	ray;

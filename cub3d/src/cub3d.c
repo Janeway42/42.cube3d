@@ -12,7 +12,7 @@
 
 
 //test
-#define MINIMAPMAX 400 
+#define MINIMAPMAX 600 
 #include "testmap.h"
 
 void	hook(void *param)
@@ -96,7 +96,8 @@ int	main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 
 	//load texture
-	gamedata.texture = mlx_load_png("brick.png");
+	gamedata.texture1 = mlx_load_png("logo.png");
+	gamedata.texture2 = mlx_load_png("brick.png");
 	//start projection
 	if (init_gamestate(&gamedata, mlx) == -1)
 		exit(EXIT_FAILURE);

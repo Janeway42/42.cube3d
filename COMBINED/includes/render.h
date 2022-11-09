@@ -83,6 +83,8 @@ void			draw_wall_col(t_info *data, unsigned int x,
 					unsigned int wall_height);
 void			draw_floor_ceiling(t_info *data, unsigned int top,
 					unsigned int bottom, unsigned int x);
-// void			draw_wall(t_data *data, unsigned int x, unsigned int wall_height);
-// unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
+void			draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda *result);
+unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
+unsigned char	get_colour_value(unsigned int colour, char colourpart);
+unsigned int	grading_colour(unsigned int colour, double percentage);
 #endif
