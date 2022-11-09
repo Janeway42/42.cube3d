@@ -1,27 +1,5 @@
 #include "../includes/render.h"
 
-void	draw_wall_col(t_info *data, unsigned int x, unsigned int wall_height)
-{
-	unsigned int	top;
-	unsigned int	bottom;
-	t_coor			walltop;
-	t_coor			wallbottom;
-	unsigned char	gradiant;
-
-	if (wall_height > data->img->height)
-		wall_height = data->img->height;
-	top = (data->img->height / 2 - wall_height / 2);
-	bottom = top + wall_height;
-	walltop.x = x;
-	walltop.y = top;
-	wallbottom.x = x;
-	wallbottom.y = bottom;
-	gradiant = (unsigned char)(255 * (wall_height / (double)data->img->height));
-	draw_line(walltop, wallbottom, data->img,
-		create_colour(gradiant, 0, 0, 255));
-	draw_floor_ceiling(data, top, bottom, x);
-}
-
 void	draw_floor_ceiling(t_info *data, unsigned int top, unsigned int bottom,
 			unsigned int x)
 {
@@ -57,93 +35,100 @@ void	create_projection(t_info *data)
 		angle = (atanf(-ps + ((2.0 * ps * x) / data->img->width)) * 180)
 			/ M_PI;
 		dda_result = apply_dda(data->player.position,
-				rotate_vector(data->player.heading_vector,
-					data->player.heading_degree - angle), angle, data->map);
+				rotate_vector(data->player.vector,
+					data->player.degree - angle), angle, data->map);
 		wall_height = (unsigned int)(data->img->height / dda_result.perp_dist);
 		draw_tex_wall(data, x, wall_height, &dda_result);
 		++x;
 	}
 }
 
-void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda *result)
+void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height
+			, t_dda *result)
 {	
-	unsigned int	top;
-	unsigned int	bottom;
-	double			step;
-	unsigned int 	height;
-	double	tex_start;
-	unsigned int	colour;
-	mlx_texture_t *texture;
+	t_draw_tex_vars	vars;
 
-	if(result->side == 0 || result->side == 2)
-		texture = data->texture[0];
-	else
-		texture = data->texture[1];
-	height = data->img->height;
-	if (wall_height > height)
+	vars.wall = data->texture[result->side];
+	if (wall_height > data->img->height)
 	{
-		top = 0;
-		bottom = height - 1;
-		tex_start = (((1 -(1.0* height/ wall_height)) / 2.0) * texture->height);
+		vars.top = 0;
+		vars.bottom = data->img->height - 1;
+		vars.tex_start = (((1 - (1.0 * data->img->height / wall_height)) / 2.0)
+				* vars.wall->height);
 	}
 	else
 	{
-		top = (height - wall_height) / 2;
-		bottom = (height + wall_height) / 2;
-		tex_start = 0.0;
+		vars.top = (data->img->height - wall_height) / 2;
+		vars.bottom = (data->img->height + wall_height) / 2;
+		vars.tex_start = 0.0;
 	}
-	step = 1.0 * texture->height / wall_height;
-	for(unsigned int y = 0; y <= bottom - top; y++)
-	{
-		
-		if (result->side == 0 || result->side == 3)
-			colour = get_colour_png(texture, (unsigned int) ((1.0- result->hitpos) * texture->width), (unsigned int) (tex_start + y * step));
-		else
-			colour = get_colour_png(texture, (unsigned int) (result->hitpos * texture->width), (unsigned int) (tex_start + y * step));
-		//colour = grading_colour(colour, 1.0 * wall_height / height);
-		draw_pixel(data->img, x, y + top, colour);
-	}
-	draw_floor_ceiling(data, top, bottom, x);
+	vars.step = 1.0 * vars.wall->height / wall_height;
+	vars.wall_height_perc = 1.0 * wall_height / data->img->height;
+	draw_tex_wall_column(data->img, x, result, &vars);
+	draw_floor_ceiling(data, vars.top, vars.bottom, x);
 }
 
-unsigned int grading_colour(unsigned int colour, double percentage)
+void	draw_tex_wall_column(mlx_image_t *img, unsigned int x, t_dda *result
+			, t_draw_tex_vars *vars)
 {
-	unsigned char R;
-	unsigned char G;
-	unsigned char B;
+	unsigned int	y;
+	unsigned int	colour;
 
-	if(percentage < 1.0)
+	y = 0;
+	while (y <= vars->bottom - vars->top)
 	{
-		R = (unsigned char) (percentage * get_colour_value(colour,'R'));
-		G = (unsigned char) (percentage * get_colour_value(colour,'G'));
-		B = (unsigned char) (percentage * get_colour_value(colour,'B'));
-		return (create_colour(R,G,B,255));
+		if (result->side == EAST || result->side == NORTH)
+			colour = get_colour_png(vars->wall,
+					(unsigned int)((1.0 - result->hitpos) * vars->wall->width),
+					(unsigned int)(vars->tex_start + y * vars->step));
+		else
+				colour = get_colour_png(vars->wall,
+					(unsigned int)(result->hitpos * vars->wall->width),
+					(unsigned int)(vars->tex_start + y * vars->step));
+		colour = grading_colour(colour, vars->wall_height_perc);
+		draw_pixel(img, x, y + vars->top, colour);
+		++y;
+	}
+}
+
+unsigned int	grading_colour(unsigned int colour, double percentage)
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+
+	if (percentage < 1.0)
+	{
+		r = (unsigned char)(percentage * get_colour_value(colour, 'r'));
+		g = (unsigned char)(percentage * get_colour_value(colour, 'g'));
+		b = (unsigned char)(percentage * get_colour_value(colour, 'b'));
+		return (create_colour(r, g, b, 255));
 	}
 	return (colour);
 }
 
-
-unsigned int get_colour_png(mlx_texture_t* png, unsigned int x, unsigned y)
+unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x
+					, unsigned int y)
 {
-	unsigned int offset;
+	unsigned int	offset;
 	unsigned char	*dst;
 
-	if(x < png->width && y < png->height)
+	if (x < png->width && y < png->height)
 	{
 		offset = y * (png->width * 4) + x * 4;
 		dst = png->pixels + offset;
-		return (*(unsigned int*) dst);
+		return (*(unsigned int *) dst);
 	}
 	return (0XFF000000);
 }
 
-unsigned char get_colour_value(unsigned int colour,char colourpart)
+unsigned char	get_colour_value(unsigned int colour, char colourpart)
 {
-	if(colourpart == 'R')
+	if (colourpart == 'r')
 		return ((unsigned char)(colour & 0x000000FF));
-	else if (colourpart == 'G')
-		return ((unsigned char)((colour & 0x0000FF00)>>8));
-	else if (colourpart == 'B')
-		return ((unsigned char)((colour & 0x00FF0000)>>16));
+	else if (colourpart == 'g')
+		return ((unsigned char)((colour & 0x0000FF00) >> 8));
+	else if (colourpart == 'b')
+		return ((unsigned char)((colour & 0x00FF0000) >> 16));
 	return (0);
 }

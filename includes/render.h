@@ -79,11 +79,10 @@ void			draw_viewing_cone(t_info *data);
 //----------------------------------------
 
 void			create_projection(t_info *data);
-void			draw_wall_col(t_info *data, unsigned int x,
-					unsigned int wall_height);
 void			draw_floor_ceiling(t_info *data, unsigned int top,
 					unsigned int bottom, unsigned int x);
 void			draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda *result);
+void			draw_tex_wall_column(mlx_image_t *img, unsigned int x, t_dda *result, t_draw_tex_vars *vars);
 unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
 unsigned char	get_colour_value(unsigned int colour, char colourpart);
 unsigned int	grading_colour(unsigned int colour, double percentage);

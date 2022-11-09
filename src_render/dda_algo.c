@@ -32,11 +32,6 @@ void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
 }
 
 //function that will start the dda algorithm
-//side 0 is east side of a square
-//side 1 is south side of a square
-//side 2 is west side of a square
-//side 3 is north side of a square
-
 void	start_dda(t_dda_vars *vars, t_dda *result, double angle, char **map)
 {
 	int	hit;
@@ -59,7 +54,7 @@ void	start_dda(t_dda_vars *vars, t_dda *result, double angle, char **map)
 		if (map[vars->map_y][vars->map_x] == '1')
 			hit = 1;
 	}
-	if (result->side == 0 || result->side == 2)
+	if (result->side == EAST || result->side == WEST)
 		result->distance = (vars->side_dist_x - vars->delta_dist_x);
 	else
 		result->distance = (vars->side_dist_y - vars->delta_dist_y);
@@ -77,7 +72,7 @@ t_dda	apply_dda(t_vector playerpos, t_vector ray, double angle, char **map)
 	dda_vars.delta_dist_y = ft_absf(1 / ray.y);
 	init_dda(&dda_vars, &playerpos, &ray);
 	start_dda(&dda_vars, &result, angle, map);
-	if (result.side == 0 || result.side == 2)
+	if (result.side == EAST || result.side == WEST)
 		result.hitpos = playerpos.y + result.distance * ray.y;
 	else
 		result.hitpos = playerpos.x + result.distance * ray.x;

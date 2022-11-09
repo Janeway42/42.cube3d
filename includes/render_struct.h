@@ -3,6 +3,14 @@
 
 # include "MLX42/MLX42.h"
 
+enum e_side
+{
+	EAST = 0,
+	SOUTH = 1,
+	WEST = 2,
+	NORTH = 3
+};
+
 typedef struct s_coor
 {
 	int	x;
@@ -18,8 +26,8 @@ typedef struct s_vector
 typedef struct s_player
 {
 	t_vector		position;
-	t_vector		heading_vector;
-	double			heading_degree;
+	t_vector		vector;
+	double			degree;
 	unsigned int	speed;
 	unsigned int	fov;
 }				t_player;
@@ -42,7 +50,7 @@ typedef struct s_info
 
 typedef struct s_dda
 {
-	int			side;
+	enum e_side	side;
 	double		hitpos;
 	double		distance;
 	double		perp_dist;
@@ -60,5 +68,16 @@ typedef struct s_dda_vars
 	int		step_y;
 
 }			t_dda_vars;
+
+typedef struct s_draw_tex_vars
+{
+	unsigned int	top;
+	unsigned int	bottom;
+	double			step;
+	double			wall_height_perc;
+	unsigned int	tex_start;
+	mlx_texture_t	*wall;
+}				t_draw_tex_vars;
+
 
 #endif

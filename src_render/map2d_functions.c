@@ -47,7 +47,7 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 		}
 		++y;
 	}
-	headingline = rotate_vector(player.heading_vector, player.heading_degree);
+	headingline = rotate_vector(player.vector, player.degree);
 	headingline.x *= 10;
 	headingline.y *= 10;
 	draw_line(vec_to_coor(playerpos), vec_to_coor(add_vectors(playerpos,

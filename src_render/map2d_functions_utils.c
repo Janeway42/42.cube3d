@@ -23,11 +23,11 @@ void	draw_viewing_cone(t_info *data)
 	i = (-1 * (data->player.fov / 2.0));
 	while (i < (data->player.fov / 2.0))
 	{
-		current_heading = rotate_vector(data->player.heading_vector,
-				data->player.heading_degree + i);
+		current_heading = rotate_vector(data->player.vector,
+				data->player.degree + i);
 		result = apply_dda(data->player.position, current_heading, i,
 				data->map);
-		ray = calc_ray_vector(data->player.heading_degree + i,
+		ray = calc_ray_vector(data->player.degree + i,
 				result.distance);
 		draw_ray(data->imgmini, ray, data->player.position,
 			data->mini_pixelsize);
