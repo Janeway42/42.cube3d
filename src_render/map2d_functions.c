@@ -1,22 +1,20 @@
 #include "../includes/render.h"
 
-int	init_minimap(t_info *gamedata)
+int	init_minimap(t_info *gamedata, unsigned int max_pixels_minimap)
 {
 	unsigned int	miniwidth;
 	unsigned int	miniheight;
-	unsigned int	max_pixels;
-
-	max_pixels = 250;
+	
 	if (gamedata->map_width > gamedata->map_height)
 	{
-		gamedata->mini_pixelsize = max_pixels
+		gamedata->mini_pixelsize = max_pixels_minimap
 			/ gamedata->map_width;
 		miniwidth = gamedata->mini_pixelsize * gamedata->map_width;
 		miniheight = gamedata->mini_pixelsize * gamedata->map_height;
 	}
 	else
 	{
-		gamedata->mini_pixelsize = max_pixels
+		gamedata->mini_pixelsize = max_pixels_minimap
 			/ gamedata->map_height;
 		miniheight = gamedata->mini_pixelsize * gamedata->map_height;
 		miniwidth = gamedata->mini_pixelsize * gamedata->map_width;

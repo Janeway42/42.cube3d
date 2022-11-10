@@ -20,8 +20,8 @@ typedef struct  s_data
     char *east;
     char *west;
 
-	unsigned int ceiling[3];
-	unsigned int floor[3];
+	unsigned char ceiling[3];
+	unsigned char floor[3];
 
     char **map;  // map  - 2d array   
 

@@ -1,6 +1,6 @@
 #include "../includes/initialize.h"
 
-static unsigned int verify_color_elem(char *str)
+static unsigned char verify_color_elem(char *str)
 {
 	unsigned int	temp;
 	char			*temp_str;
@@ -12,11 +12,11 @@ static unsigned int verify_color_elem(char *str)
 	if (temp > 255)
 		error_exit_input("invalid color");
 	free(temp_str);
-	return (temp);
+	return ((unsigned char)temp);
 }
 
 // static void	process_color(char *line, unsigned char **str, t_data *data)
-static void process_color(char *line, unsigned int array[], t_data *data)
+static void process_color(char *line, unsigned char array[], t_data *data)
 {
 	char	**split;
 	char	**split_digits;

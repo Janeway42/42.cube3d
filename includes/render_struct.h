@@ -79,5 +79,15 @@ typedef struct s_draw_tex_vars
 	mlx_texture_t	*wall;
 }				t_draw_tex_vars;
 
+typedef union u_rgba
+{
+    unsigned int rgba;
+    struct {
+        unsigned char r;
+        unsigned char g;
+        unsigned char b;
+        unsigned char a;
+    };
+}   t_rgba;
 
 #endif

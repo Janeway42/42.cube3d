@@ -1,44 +1,39 @@
 #include "../includes/render.h"
 
+static void	process_movement_input(t_info *data, double angle)
+{
+	t_vector	mov_vector;
+	t_dda		result;
+
+	mov_vector = rotate_vector(data->player.vector,
+			data->player.degree + angle);
+	result = apply_dda(data->player.position, mov_vector,
+			data->player.degree + angle, data->map);
+	if (result.distance > 0.1)
+	{
+		data->player.position.x += mov_vector.x * 0.01 * data->player.speed;
+		data->player.position.y += mov_vector.y * 0.01 * data->player.speed;
+	}
+}
+
 static void	process_input_key(t_info *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		data->player.degree = fmod(data->player.degree
 				- data->rotation_angle + 360, 360);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		data->player.degree = fmod(data->player.degree
 				+ data->rotation_angle, 360);
-}
-
-static void	process_input_key2(t_info *data)
-{	
-	t_vector	mov_vector;
-	t_dda		result;
-
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
-	{
-		mov_vector = rotate_vector(data->player.vector, data->player.degree);
-		result = apply_dda(data->player.position, mov_vector,
-				data->player.degree, data->map);
-		if (result.distance < 0.1)
-			return ;
-		data->player.position.x += mov_vector.x * 0.01 * data->player.speed;
-		data->player.position.y += mov_vector.y * 0.01 * data->player.speed;
-	}
+		process_movement_input(data, 0.0);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		process_movement_input(data, 270.0);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		process_movement_input(data, 90.0);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
-	{
-		mov_vector = rotate_vector(data->player.vector,
-				data->player.degree + 180.0);
-		result = apply_dda(data->player.position, mov_vector,
-				data->player.degree + 180.0, data->map);
-		if (result.distance > 0.1)
-		{
-			data->player.position.x += mov_vector.x * 0.01 * data->player.speed;
-			data->player.position.y += mov_vector.y * 0.01 * data->player.speed;
-		}
-	}
+		process_movement_input(data, 180.0);
 }
 
 void	hook(void *param)
@@ -47,13 +42,13 @@ void	hook(void *param)
 
 	data = (t_info *) param;
 	process_input_key(data);
-	process_input_key2(data);
 	clear_image(data->img);
 	create_projection(data);
 	clear_image(data->imgmini);
 	draw_map(data);
 	draw_viewing_cone(data);
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
+	clear_image(data->imgmini);
 }
 
 static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
@@ -76,32 +71,40 @@ static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->map_width = data->map_columns;
 	gamedata->map_height = data->map_rows;
 	gamedata->texture[0] = mlx_load_png(data->east);
+	free(data->east);
 	gamedata->texture[1] = mlx_load_png(data->south);
+	free(data->south);
 	gamedata->texture[2] = mlx_load_png(data->west);
+	free(data->west);
 	gamedata->texture[3] = mlx_load_png(data->north);
-	gamedata->ceiling_colour = create_colour((unsigned char)data->ceiling[0], (unsigned char)data->ceiling[1], (unsigned char)data->ceiling[2], 255);
-	gamedata->floor_colour = create_colour((unsigned char)data->floor[0], (unsigned char)data->floor[1], (unsigned char)data->floor[2], 255);
+	free(data->north);
+	gamedata->ceiling_colour = create_colour(data->ceiling[0], data->ceiling[1], data->ceiling[2], 255);
+	gamedata->floor_colour = create_colour(data->floor[0], data->floor[1], data->floor[2], 255);
 	return (1);
 }
 
 void	render(t_data *data)
 {
-	mlx_t	*mlx;
-	t_info	gamedata;
+	mlx_t			*mlx;
+	t_info			gamedata;
+	unsigned int	max_pixels_minimap;
 
+	max_pixels_minimap = 250;
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	if (init_gamestate(data, &gamedata, mlx) == -1)
 		exit(EXIT_FAILURE);
 	create_projection(&gamedata);
-	if (init_minimap(&gamedata) == -1)
+	if (init_minimap(&gamedata, max_pixels_minimap) == -1)
 		exit(EXIT_FAILURE);
 	draw_map(&gamedata);
 	draw_viewing_cone(&gamedata);
 	draw_player(gamedata.imgmini, gamedata.player, gamedata.mini_pixelsize);
 	mlx_image_to_window(gamedata.mlx, gamedata.img, 0, 0);
-	mlx_image_to_window(gamedata.mlx, gamedata.imgmini, gamedata.img->width - gamedata.imgmini->width, gamedata.img->height - gamedata.imgmini->height);
+	mlx_image_to_window(gamedata.mlx, gamedata.imgmini,
+		gamedata.img->width - gamedata.imgmini->width,
+		gamedata.img->height - gamedata.imgmini->height);
 	mlx_loop_hook(gamedata.mlx, &hook, &gamedata);
 	mlx_loop(gamedata.mlx);
 	mlx_terminate(gamedata.mlx);

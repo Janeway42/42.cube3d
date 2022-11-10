@@ -39,7 +39,8 @@ SRC_RENDER = 	render.c\
 				map2d_functions.c \
 				map2d_functions_utils.c \
 				dda_algo.c \
-				projection3d.c
+				projection3d.c \
+				colour_functions.c
 
 UTILS_DIR	=	utils/
 UTILS		=	error.c\

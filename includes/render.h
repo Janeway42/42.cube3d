@@ -61,7 +61,7 @@ void			clear_image(mlx_image_t *img);
 //----------------------------------------
 // Map2d functions (2d minimap)
 //----------------------------------------
-int				init_minimap(t_info *gamedata);
+int				init_minimap(t_info *gamedata, unsigned int max_pixels_minimap);
 void			draw_player(mlx_image_t *img, t_player player,
 					unsigned int pixelsize);
 void			draw_map(t_info *data);
