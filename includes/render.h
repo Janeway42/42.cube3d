@@ -12,7 +12,7 @@
 //definition windows resolution
 #define WIDTH 1000
 #define HEIGHT 1000
-
+#define MINIMAP_MAX_PIXEL_SIZE 400
 
 //testing REMOVE
 # include <stdio.h>
@@ -48,8 +48,6 @@ long			abs_int(int number);
 
 t_dda			apply_dda(t_vector playerpos, t_vector ray, double angle,
 					char **map);
-double			calc_distance_to_wall(t_vector playerpos, t_vector ray,
-					char **map);
 
 //----------------------------------------
 // Image buffer functions
@@ -65,10 +63,6 @@ int				init_minimap(t_info *gamedata, unsigned int max_pixels_minimap);
 void			draw_player(mlx_image_t *img, t_player player,
 					unsigned int pixelsize);
 void			draw_map(t_info *data);
-void			draw_wall(mlx_image_t *img, unsigned int x, unsigned int y,
-					unsigned int pixelsize);
-void			draw_floor(mlx_image_t *img, unsigned int x, unsigned int y,
-					unsigned int pixelsize);
 void			draw_ray(mlx_image_t *img, t_vector ray, t_vector playerpos,
 					unsigned int pixelsize);
 t_vector		calc_ray_vector(double degree, double distance);
@@ -79,10 +73,6 @@ void			draw_viewing_cone(t_info *data);
 //----------------------------------------
 
 void			create_projection(t_info *data);
-void			draw_floor_ceiling(t_info *data, unsigned int top,
-					unsigned int bottom, unsigned int x);
-void			draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height, t_dda *result);
-void			draw_tex_wall_column(mlx_image_t *img, unsigned int x, t_dda *result, t_draw_tex_vars *vars);
 unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
 unsigned char	get_colour_value(unsigned int colour, char colourpart);
 unsigned int	grading_colour(unsigned int colour, double percentage);

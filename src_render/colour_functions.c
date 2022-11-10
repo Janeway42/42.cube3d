@@ -1,7 +1,5 @@
 #include "../includes/render.h"
 
-unsigned int	grading_colour(unsigned int colour, double percentage)
-{
 	// unsigned char	r;
 	// unsigned char	g;
 	// unsigned char	b;
@@ -14,14 +12,17 @@ unsigned int	grading_colour(unsigned int colour, double percentage)
 	// 	return (create_colour(r, g, b, 255));
 	// }
 	// return (colour);
-	t_rgba color;
+
+unsigned int	grading_colour(unsigned int colour, double percentage)
+{
+	t_rgba	color;
+
 	color.rgba = colour;
-	if(percentage < 1.0)
+	if (percentage < 1.0)
 	{
-		color.r = (unsigned char) ((percentage) * color.r);
-		color.g = (unsigned char) ((percentage)*  color.g);
-		color.b = (unsigned char) ((percentage) * color.b);
-		//color.a = (unsigned char) (percentage * color.a);
+		color.r = (unsigned char)((percentage) * color.r);
+		color.g = (unsigned char)((percentage) * color.g);
+		color.b = (unsigned char)((percentage) * color.b);
 	}
 	return (color.rgba);
 }

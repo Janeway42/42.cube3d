@@ -33,7 +33,7 @@ SRC_INIT	=	main.c\
 
 SRC_RENDER_DIR = src_render/
 SRC_RENDER = 	render.c\
-				render_utils.c \
+				vector_functions.c \
 				bres_algo.c \
 				image_buffer_functions.c\
 				map2d_functions.c \

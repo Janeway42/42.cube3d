@@ -7,7 +7,7 @@ double	ft_absf(double number)
 	return (number);
 }
 
-void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
+static void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
 {
 	if (ray->x < 0)
 	{
@@ -32,7 +32,7 @@ void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
 }
 
 //function that will start the dda algorithm
-void	start_dda(t_dda_vars *vars, t_dda *result, double angle, char **map)
+static void	start_dda(t_dda_vars *vars, t_dda *result, double angle, char **map)
 {
 	int	hit;
 

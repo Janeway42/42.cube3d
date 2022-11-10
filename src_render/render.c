@@ -48,7 +48,6 @@ void	hook(void *param)
 	draw_map(data);
 	draw_viewing_cone(data);
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
-	clear_image(data->imgmini);
 }
 
 static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
@@ -89,7 +88,7 @@ void	render(t_data *data)
 	t_info			gamedata;
 	unsigned int	max_pixels_minimap;
 
-	max_pixels_minimap = 250;
+	max_pixels_minimap = MINIMAP_MAX_PIXEL_SIZE;
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);

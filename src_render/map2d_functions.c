@@ -4,7 +4,7 @@ int	init_minimap(t_info *gamedata, unsigned int max_pixels_minimap)
 {
 	unsigned int	miniwidth;
 	unsigned int	miniheight;
-	
+
 	if (gamedata->map_width > gamedata->map_height)
 	{
 		gamedata->mini_pixelsize = max_pixels_minimap
@@ -52,6 +52,46 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 				headingline)), img, WHITE);
 }
 
+static void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y
+			, unsigned int pixelsize)
+{
+	unsigned int	wall_x;
+	unsigned int	wall_y;
+
+	wall_x = x;
+	wall_y = y;
+	while (wall_x < x + pixelsize - 1)
+	{
+		wall_y = y;
+		while (wall_y < y + pixelsize - 1)
+		{
+			draw_pixel(img, wall_x, wall_y, WHITE);
+			++wall_y;
+		}
+		++wall_x;
+	}
+}
+
+static void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y
+		, unsigned int pixelsize)
+{
+	unsigned int	floor_x;
+	unsigned int	floor_y;
+
+	floor_x = x;
+	floor_y = y;
+	while (floor_x < x + pixelsize)
+	{
+		floor_y = y;
+		while (floor_y < y + pixelsize)
+		{
+			draw_pixel(img, floor_x, floor_y, GREY);
+			++floor_y;
+		}
+		++floor_x;
+	}
+}
+
 void	draw_map(t_info *data)
 {
 	unsigned int	pixelsize;
@@ -74,45 +114,5 @@ void	draw_map(t_info *data)
 			++x;
 		}
 		++y;
-	}
-}
-
-void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y
-			, unsigned int pixelsize)
-{
-	unsigned int	wall_x;
-	unsigned int	wall_y;
-
-	wall_x = x;
-	wall_y = y;
-	while (wall_x < x + pixelsize - 1)
-	{
-		wall_y = y;
-		while (wall_y < y + pixelsize - 1)
-		{
-			draw_pixel(img, wall_x, wall_y, WHITE);
-			++wall_y;
-		}
-		++wall_x;
-	}
-}
-
-void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y
-		, unsigned int pixelsize)
-{
-	unsigned int	floor_x;
-	unsigned int	floor_y;
-
-	floor_x = x;
-	floor_y = y;
-	while (floor_x < x + pixelsize)
-	{
-		floor_y = y;
-		while (floor_y < y + pixelsize)
-		{
-			draw_pixel(img, floor_x, floor_y, GREY);
-			++floor_y;
-		}
-		++floor_x;
 	}
 }
