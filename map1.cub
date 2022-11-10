@@ -1,7 +1,7 @@
-NO /Users/cpopa/Downloads/vela.png
-SO /Users/cpopa/Downloads/vela.png
-WE /Users/cpopa/Downloads/vela.png
-EA /Users/cpopa/Downloads/vela.png
+NO ./images/brick.png
+SO ./images/brick2.png
+WE ./images/brick3.png
+EA ./images/brick4.png
 
 F 220,100,0
 C 225,30,0

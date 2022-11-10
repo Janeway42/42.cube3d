@@ -1,5 +1,5 @@
 NAME = cub3d
-CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS	= #-Wall -Werror -Wextra -g #-fsanitize=address
 UNAME = $(shell uname -s)
 
 # libraries

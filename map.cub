@@ -1,7 +1,7 @@
-NO ./images/brick.png 
-SO ./images/logo.png
-WE ./images/brick.png
-EA ./images/logo.png
+NO ./images/brick1.png
+SO ./images/brick2.png
+WE ./images/brick3.png
+EA ./images/brick4.png
 
 F 0,255,0
 C 0,0,255 

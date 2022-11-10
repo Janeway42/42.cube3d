@@ -9,7 +9,7 @@ static unsigned int verify_color_elem(char *str)
 	temp_str = ft_itoa(temp);
 	if (ft_strncmp(temp_str, str, ft_strlen(str) != 0))
 		error_exit_input("wrong color input");
-	if (temp < 0 || temp > 255)
+	if (temp > 255)
 		error_exit_input("invalid color");
 	free(temp_str);
 	return (temp);
@@ -22,7 +22,7 @@ static void process_color(char *line, unsigned int array[], t_data *data)
 	char	**split_digits;
 
 	split = ft_split(line, ' ');
-	if (split == NULL || !split[1] || split[1] == '\0')
+	if (split == NULL || !split[1] || split[1] == NULL)
 		error_exit_input("failed ft_split");
 	split_digits = ft_split(split[1], ',');
 	if (split_digits == NULL)
