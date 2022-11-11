@@ -48,7 +48,6 @@ void	hook(void *param)
 	draw_map(data);
 	draw_viewing_cone(data);
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
-	printf("FPS: %f\n", 1.0/data->mlx->delta_time);
 }
 
 void	render(t_data *data)
@@ -60,12 +59,12 @@ void	render(t_data *data)
 	max_pixels_minimap = MINIMAP_MAX_PIXEL_SIZE;
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);
 	if (!mlx)
-		exit(EXIT_FAILURE);
+		error_exit_input("Couldn't initialize MLX\n");
 	if (init_gamestate(data, &gamedata, mlx) == -1)
-		exit(EXIT_FAILURE);
+		error_exit_input("Something went wrong with initializing gamestate\n");
 	create_projection(&gamedata);
 	if (init_minimap(&gamedata, max_pixels_minimap) == -1)
-		exit(EXIT_FAILURE);
+		error_exit_input("Something went wrong with initializing minimap\n");
 	draw_map(&gamedata);
 	draw_viewing_cone(&gamedata);
 	draw_player(gamedata.imgmini, gamedata.player, gamedata.mini_pixelsize);

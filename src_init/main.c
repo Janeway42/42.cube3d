@@ -1,23 +1,14 @@
 #include "../includes/initialize.h"
 
-unsigned char	**assign_memory(void)
+char	*assign_memory(void)
 {
-	unsigned char	**str;
+	char	*str;
 	int				i;
 
-	str = malloc(sizeof(char **) * 3);
+	str = malloc(sizeof(char *) * 3);
 	if (!str)
 		error_exit_input("malloc fail");
-	str[2] = NULL;
-	i = 0;
-	while (i < 2)
-	{
-		str[i] = malloc(sizeof(char *) * 1);
-		if (!str[i])
-			error_exit_input("malloc fail");
-		str[i][0] = '\0';
-		i++;
-	}
+	str[2] = '\0';
 	return (str);
 }
 
@@ -30,10 +21,10 @@ static void	initialize_data(t_data *data)
 	data->map_columns = 0;
 	data->player = 0;
 	data->player_direction = -1;
-	data->north = (char *)assign_memory();
-	data->south = (char *)assign_memory();
-	data->east = (char *)assign_memory();
-	data->west = (char *)assign_memory();
+	data->north = assign_memory();
+	data->south = assign_memory();
+	data->east = assign_memory();
+	data->west = assign_memory();
 }
 
 // -------------------------------------------------------------
@@ -70,5 +61,6 @@ int	main(int argc, char **argv)
 		printf("Wrong number of argumnets\n");
 		return (1);
 	}
+	system("leaks -q cub3d");
 	return (0);
 }
