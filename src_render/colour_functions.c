@@ -52,3 +52,11 @@ unsigned char	get_colour_value(unsigned int colour, char colourpart)
 		return ((unsigned char)((colour & 0x00FF0000) >> 16));
 	return (0);
 }
+
+//since MLX42 uses the RGBA format the color need to be created as such
+//but mlx42 is also little endian so it will be ARGB.
+unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b
+				, unsigned char a)
+{
+	return ((unsigned int)(a << 24 | b << 16 | g << 8 | r));
+}

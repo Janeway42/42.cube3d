@@ -48,38 +48,7 @@ void	hook(void *param)
 	draw_map(data);
 	draw_viewing_cone(data);
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
-}
-
-static int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
-{
-	gamedata->mlx = mlx;
-	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
-	if (!gamedata->img)
-		return (-1);
-	gamedata->player.position.x = data->player_pos[1];
-	gamedata->player.position.y = data->player_pos[0];
-	gamedata->player.degree = data->player_direction;
-	gamedata->player.vector.x = 1.0;
-	gamedata->player.vector.y = 0.0;
-	gamedata->player.speed = 5;
-	gamedata->player.fov = 90;
-	gamedata->rotation_angle = 3.0;
-	gamedata->map = data->map;
-	if (gamedata->map == NULL)
-		return (-1);
-	gamedata->map_width = data->map_columns;
-	gamedata->map_height = data->map_rows;
-	gamedata->texture[0] = mlx_load_png(data->east);
-	free(data->east);
-	gamedata->texture[1] = mlx_load_png(data->south);
-	free(data->south);
-	gamedata->texture[2] = mlx_load_png(data->west);
-	free(data->west);
-	gamedata->texture[3] = mlx_load_png(data->north);
-	free(data->north);
-	gamedata->ceiling_colour = create_colour(data->ceiling[0], data->ceiling[1], data->ceiling[2], 255);
-	gamedata->floor_colour = create_colour(data->floor[0], data->floor[1], data->floor[2], 255);
-	return (1);
+	printf("FPS: %f\n", 1.0/data->mlx->delta_time);
 }
 
 void	render(t_data *data)

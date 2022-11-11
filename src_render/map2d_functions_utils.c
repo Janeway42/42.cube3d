@@ -31,7 +31,7 @@ void	draw_viewing_cone(t_info *data)
 				result.distance);
 		draw_ray(data->imgmini, ray, data->player.position,
 			data->mini_pixelsize);
-		i += .25;
+		i += .1;
 	}
 }
 

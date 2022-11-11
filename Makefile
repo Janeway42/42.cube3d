@@ -33,6 +33,7 @@ SRC_INIT	=	main.c\
 
 SRC_RENDER_DIR = src_render/
 SRC_RENDER = 	render.c\
+				render_init.c \
 				vector_functions.c \
 				bres_algo.c \
 				image_buffer_functions.c\
@@ -69,7 +70,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(MAKE) -C $(LIB_DIR)/$(LIBFT_DIR) 
 	$(MAKE) -C $(LIB_DIR)/$(MLX42_DIR)
-	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIB_INCLUDE) $(LIB_FLAGS)
+	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIB_INCLUDE) $(LIB_FLAGS) -O3
 
 %.o: %.c $(HEADER_FILES)
 	@mkdir -p obj

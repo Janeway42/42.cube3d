@@ -10,23 +10,27 @@
 # include "initialize.h"
 
 //definition windows resolution
-#define WIDTH 1000
-#define HEIGHT 1000
+#define WIDTH 1280
+#define HEIGHT 720
 #define MINIMAP_MAX_PIXEL_SIZE 400
 
 //testing REMOVE
 # include <stdio.h>
 
 //----------------------------------------
-// Cub3d utility functions
+// render init functions
+//----------------------------------------
+
+int				init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx);
+
+//----------------------------------------
+// vector functions
 //----------------------------------------
 
 t_coor			vec_to_coor(t_vector vec);
 t_vector		add_vectors(t_vector vec1, t_vector vec2);
 t_vector		subtract_vectors(t_vector vec1, t_vector vec2);
 t_vector		rotate_vector(t_vector vect, double degree);
-unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b,
-					unsigned char a);
 
 //----------------------------------------
 // Bresenham line draw algorithm
@@ -43,8 +47,6 @@ long			abs_int(int number);
 //----------------------------------------
 // Digital differential Analyzer (DDA)
 //----------------------------------------
-
-//	calculate the distance to the first wall it hits
 
 t_dda			apply_dda(t_vector playerpos, t_vector ray, double angle,
 					char **map);
@@ -71,9 +73,14 @@ void			draw_viewing_cone(t_info *data);
 //----------------------------------------
 // Projection 3d functions 
 //----------------------------------------
-
 void			create_projection(t_info *data);
+
+//----------------------------------------
+// Colour functions
+//----------------------------------------
 unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
 unsigned char	get_colour_value(unsigned int colour, char colourpart);
 unsigned int	grading_colour(unsigned int colour, double percentage);
+unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b,
+					unsigned char a);
 #endif
