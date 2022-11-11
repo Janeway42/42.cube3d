@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   get_next_line_utils.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:16:27 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:16:46 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/get_next_line.h"
 
 static int	copy_string(char **dest, const char *src, int n)

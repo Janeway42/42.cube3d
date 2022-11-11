@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:08:03 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:08:04 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/render.h"
 
 static void	process_movement_input(t_info *data, double angle)

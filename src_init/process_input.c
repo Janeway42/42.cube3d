@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   process_input.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:07:02 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:08:55 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/initialize.h"
 
 // function finds the line on which the map starts
@@ -10,8 +22,27 @@ static void	count_line(char *line, t_data *data)
 	row_size = ft_strlen(line);
 	if (row_size > data->map_columns)
 		data->map_columns = row_size;
-	if (row_size != 0)                 //  ??????
+	if (row_size != 0)
 		data->map_rows++;
+}
+
+static void	count_rows(int fd, char **line, int i, t_data *data)
+{
+	int	bytes;
+
+	data->map_rows++;
+	data->map_columns = ft_strlen(*line);
+	free(*line);
+	bytes = get_next_line(fd, line);
+	while (bytes > 0)
+	{
+		count_line(*line, data);
+		free(*line);
+		bytes = get_next_line(fd, line);
+	}
+	if (*line[i] != '\0')
+		count_line(*line, data);
+	free(*line);
 }
 
 static void	find_map_start(int fd, t_data *data)
@@ -38,22 +69,7 @@ static void	find_map_start(int fd, t_data *data)
 		bytes = get_next_line(fd, &line);
 	}
 	data->map_start++;
-	data->map_rows++;
-	data->map_columns = ft_strlen(line);
-	free(line);
-
-	bytes = get_next_line(fd, &line);
-	while (bytes > 0)
-	{
-		count_line(line, data);
-		free(line);
-		bytes = get_next_line(fd, &line);
-	}
-	if (line[i] != '\0')
-		count_line(line, data);
-	free(line);
-	printf("rows: %d\n", data->map_rows); // remove --------------------------------
-	printf("col: %d\n", data->map_columns); // remove --------------------------------
+	count_rows(fd, &line, i, data);
 }
 
 //-------------------------------------------------------

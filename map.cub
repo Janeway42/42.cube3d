@@ -1,10 +1,11 @@
 NO ./images/brick1.png
+F 0,255,0
 SO ./images/brick2.png
 WE ./images/brick3.png
-EA ./images/brick4.png
 
-F 0,255,0
 C 0,0,255 
+
+EA ./images/brick4.png
 
         1111111111111111111111111
         1000000000110000000000001

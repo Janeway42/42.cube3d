@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   projection3d.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:07:53 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:07:53 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/render.h"
 
 static void	draw_floor_ceiling(t_info *data, unsigned int top,

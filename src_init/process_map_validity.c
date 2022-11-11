@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   process_map_validity.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:07:08 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:07:09 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/initialize.h"
 
 // if map[i][j] == 0  || map[i][j] == NSEW -> if neighbours == ' ' error 
@@ -31,7 +43,7 @@ static void	process_player(int i, int j, t_data *data)
 	if (data->player == 1)
 		error_exit_input("invalid map");
 	data->player = 1;
-	if(data->map[i][j] == 'N')
+	if (data->map[i][j] == 'N')
 		data->player_direction = 90;
 	if (data->map[i][j] == 'S')
 		data->player_direction = 270;
