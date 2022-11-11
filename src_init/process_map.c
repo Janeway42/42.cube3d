@@ -66,21 +66,26 @@ static void	copy_row(int i, char *line, t_data *data)
 void	check_store_map(int fd, char **line, t_data *data)
 {
 	int	i;
+	int	bytes;
 
 	i = 0;
 	allocate_memory_map(data);
 	copy_row(i, *line, data);
 	i++;
-	while (get_next_line(fd, line) > 0 && i < data->map_rows)
+
+	free(*line);
+	bytes = get_next_line(fd, line);
+	while (bytes > 0 && i < data->map_rows)
 	{
 		if (i < data->map_rows && check_row_map(*line) == 1)
 			error_exit_input("invalid map row");
 		copy_row(i, *line, data);
 		i++;
+		free(*line);
+		bytes = get_next_line(fd, line);
 	}
 	if (check_row_map(*line) == 1)
 		error_exit_input("invalid map row");
 	copy_row(i, *line, data);
-
 	print_map(data); // remove ----------------------------
 }

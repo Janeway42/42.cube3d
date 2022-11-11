@@ -93,17 +93,19 @@ char	*process_path_color(int fd, t_data *data)
 
 	i = 0;
 
-
-	while (i < data->map_start)
+	get_next_line(fd, &line);
+	while (i < data->map_start - 1)
 	{
-		get_next_line(fd, &line);
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
 		if (line[j] != '\0')
 			process_distribution(line, j, data);
 		i++;
+		free(line);
+		get_next_line(fd, &line);
 	}
+
 	if (data->nr_paths < 3 || data->nr_colors < 2)
 		error_exit_input("too few paths/colors");
 	return (line);

@@ -18,9 +18,11 @@ static void	find_map_start(int fd, t_data *data)
 {
 	char	*line;
 	int		i;
+	int		bytes;
 
 	i = 0;
-	while (get_next_line(fd, &line) > 0)
+	bytes = get_next_line(fd, &line);
+	while (bytes > 0)
 	{
 		if (line[i] == '\0' || (line[i] == 'N' && line[i + 1] == 'O')
 			|| (line[i] == 'S' && line[i + 1] == 'O')
@@ -32,14 +34,24 @@ static void	find_map_start(int fd, t_data *data)
 			break ;
 		else
 			error_exit_input("invalid input/map row");
+		free(line);
+		bytes = get_next_line(fd, &line);
 	}
 	data->map_start++;
 	data->map_rows++;
 	data->map_columns = ft_strlen(line);
-	while (get_next_line(fd, &line) > 0)
+	free(line);
+
+	bytes = get_next_line(fd, &line);
+	while (bytes > 0)
+	{
 		count_line(line, data);
+		free(line);
+		bytes = get_next_line(fd, &line);
+	}
 	if (line[i] != '\0')
 		count_line(line, data);
+	free(line);
 	printf("rows: %d\n", data->map_rows); // remove --------------------------------
 	printf("col: %d\n", data->map_columns); // remove --------------------------------
 }
@@ -48,8 +60,8 @@ static void	find_map_start(int fd, t_data *data)
 
 int	process_input(char *file, t_data *data)
 {
-	int		fd;
 	char	*line;
+	int		fd;
 
 	fd = open_fd(file);
 	find_map_start(fd, data);
@@ -57,6 +69,7 @@ int	process_input(char *file, t_data *data)
 	fd = open_fd(file);
 	line = process_path_color(fd, data);
 	check_store_map(fd, &line, data);
+	free(line);
 	close(fd);
 	check_map_validity(data);
 	return (0);
