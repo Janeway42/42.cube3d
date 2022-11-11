@@ -50,6 +50,16 @@ void	hook(void *param)
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
 }
 
+static void	clean_up_mlx(t_info *gamedata)
+{
+	mlx_delete_texture(gamedata->texture[0]);
+	mlx_delete_texture(gamedata->texture[1]);
+	mlx_delete_texture(gamedata->texture[2]);
+	mlx_delete_texture(gamedata->texture[3]);
+	mlx_delete_image(gamedata->mlx, gamedata->img);
+	mlx_delete_image(gamedata->mlx, gamedata->imgmini);
+}
+
 void	render(t_data *data)
 {
 	mlx_t			*mlx;
@@ -74,11 +84,6 @@ void	render(t_data *data)
 		gamedata.img->height - gamedata.imgmini->height);
 	mlx_loop_hook(gamedata.mlx, &hook, &gamedata);
 	mlx_loop(gamedata.mlx);
-	mlx_delete_texture(gamedata.texture[0]);
-	mlx_delete_texture(gamedata.texture[1]);
-	mlx_delete_texture(gamedata.texture[2]);
-	mlx_delete_texture(gamedata.texture[3]);
-	mlx_delete_image(gamedata.mlx, gamedata.img);
-	mlx_delete_image(gamedata.mlx, gamedata.imgmini);
+	clean_up_mlx(&gamedata);
 	mlx_terminate(gamedata.mlx);
 }
