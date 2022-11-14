@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:01:54 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 17:34:36 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	process_color(char *line, unsigned char array[],
 	while (line[i] == ' ')
 		i++;
 	split = ft_split((line + i), ',');
-	if (!split[0] || !split[1] || !split[2])
+	if (!split || !split[0] || !split[1] || !split[2])
 		error_exit_input("failed ft_split");
 	if (split[3] != NULL)
 		error_exit_input("invalid color input");
@@ -67,6 +67,10 @@ static void	process_path(char *line, char **str, t_data *data, int k)
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
 	split = ft_split(line, ' ');
+	if (!split || !split[0] || !split[1])
+		error_exit_input("failed ft_split");
+	if (split[2] != NULL)
+		error_exit_input("invalid path input");
 	fd = open(split[1], O_RDONLY);
 	if (fd == -1)
 	{
