@@ -61,6 +61,5 @@ int	main(int argc, char **argv)
 		printf("Wrong number of argumnets\n");
 		return (1);
 	}
-	system("leaks -q cub3d");
 	return (0);
 }
