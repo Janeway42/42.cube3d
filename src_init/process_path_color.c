@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:34:36 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 17:37:22 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static unsigned char	verify_color_elem(char *str)
 	return ((unsigned char)temp);
 }
 
-// static void	process_color(char *line, unsigned char **str, t_data *data)
 static void	process_color(char *line, unsigned char array[],
 							t_data *data, int k)
 {
