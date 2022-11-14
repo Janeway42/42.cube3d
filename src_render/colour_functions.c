@@ -6,25 +6,14 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:29 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:30 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:53:16 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
-	// unsigned char	r;
-	// unsigned char	g;
-	// unsigned char	b;
-
-	// if (percentage < 1.0)
-	// {
-	// 	r = (unsigned char)(percentage * get_colour_value(colour, 'r'));
-	// 	g = (unsigned char)(percentage * get_colour_value(colour, 'g'));
-	// 	b = (unsigned char)(percentage * get_colour_value(colour, 'b'));
-	// 	return (create_colour(r, g, b, 255));
-	// }
-	// return (colour);
-
+//function will change the given colour to a darker tone depending on the 
+//percentage it is given.
 unsigned int	grading_colour(unsigned int colour, double percentage)
 {
 	t_rgba	color;
@@ -39,6 +28,7 @@ unsigned int	grading_colour(unsigned int colour, double percentage)
 	return (color.rgba);
 }
 
+//will get the colour on a specific point on the texture
 unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x
 					, unsigned int y)
 {
@@ -54,6 +44,7 @@ unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x
 	return (0XFF000000);
 }
 
+//will get the value of a specific part of a colour
 unsigned char	get_colour_value(unsigned int colour, char colourpart)
 {
 	if (colourpart == 'r')

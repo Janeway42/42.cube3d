@@ -6,12 +6,13 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:08:03 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:08:04 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:37:55 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
+//moves the player according to angle
 static void	process_movement_input(t_info *data, double angle)
 {
 	t_vector	mov_vector;
@@ -28,6 +29,7 @@ static void	process_movement_input(t_info *data, double angle)
 	}
 }
 
+//process the key input
 static void	process_input_key(t_info *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
@@ -48,6 +50,7 @@ static void	process_input_key(t_info *data)
 		process_movement_input(data, 180.0);
 }
 
+//the hook function for the loop
 void	hook(void *param)
 {
 	t_info		*data;
@@ -62,6 +65,7 @@ void	hook(void *param)
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
 }
 
+//cleans up the textures and the image buffers
 static void	clean_up_mlx(t_info *gamedata)
 {
 	mlx_delete_texture(gamedata->texture[0]);
@@ -72,6 +76,7 @@ static void	clean_up_mlx(t_info *gamedata)
 	mlx_delete_image(gamedata->mlx, gamedata->imgmini);
 }
 
+//initialize the image buffers and start drawing the projection and minimap
 void	render(t_data *data)
 {
 	mlx_t			*mlx;

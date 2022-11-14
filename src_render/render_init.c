@@ -6,13 +6,14 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:57 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:58 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 14:01:37 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
-static int	load_textures(t_data *data, t_info *gamedata)
+//load the textures
+static void	load_textures(t_data *data, t_info *gamedata)
 {
 	int	i;
 
@@ -31,17 +32,16 @@ static int	load_textures(t_data *data, t_info *gamedata)
 			error_exit_input("Texture could not be loaded.");
 		++i;
 	}
-	return (1);
 }
 
+//initialize the gamestate
 int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 {
 	gamedata->mlx = mlx;
 	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (!gamedata->img)
 		return (-1);
-	if (load_textures(data, gamedata) == -1)
-		return (-1);
+	load_textures(data, gamedata);
 	gamedata->player.position.x = data->player_pos[1];
 	gamedata->player.position.y = data->player_pos[0];
 	gamedata->player.degree = data->player_direction;

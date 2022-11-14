@@ -6,12 +6,13 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:35 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:35 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:50:57 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
+//returns the absolute value of a double value
 double	ft_absf(double number)
 {
 	if (number < 0)
@@ -19,6 +20,7 @@ double	ft_absf(double number)
 	return (number);
 }
 
+//initialize the dda variables before the algorithm
 static void	init_dda(t_dda_vars *vars, t_vector *pos, t_vector *ray)
 {
 	if (ray->x < 0)
@@ -73,6 +75,12 @@ static void	start_dda(t_dda_vars *vars, t_dda *result, double angle, char **map)
 	result->perp_dist = cos((angle / 180) * M_PI) * result->distance;
 }
 
+//it will apply the dda algorithm and find the first wall it hits
+//returns a struct with
+//	* which side it hits
+//	* where it hits the wall
+//	* the eclidean distance to the wall
+//	* the perpendicular distance to the wall from the camera plane of the player
 t_dda	apply_dda(t_vector playerpos, t_vector ray, double angle, char **map)
 {
 	t_dda		result;

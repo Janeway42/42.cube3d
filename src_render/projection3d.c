@@ -6,12 +6,13 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:53 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:53 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:41:28 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
+//draw the floor and ceiling colours
 static void	draw_floor_ceiling(t_info *data, unsigned int top,
 	unsigned int bottom, unsigned int x)
 {
@@ -32,6 +33,7 @@ static void	draw_floor_ceiling(t_info *data, unsigned int top,
 	draw_line(floortop, floorbottom, data->img, data->floor_colour);
 }
 
+//draw a column of textures
 static void	draw_tex_wall_column(mlx_image_t *img, unsigned int x, t_dda *result
 			, t_draw_tex_vars *vars)
 {
@@ -55,6 +57,7 @@ static void	draw_tex_wall_column(mlx_image_t *img, unsigned int x, t_dda *result
 	}
 }
 
+//determine where to draw the textured wall and draw it
 static void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height
 			, t_dda *result)
 {	
@@ -80,6 +83,7 @@ static void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height
 	draw_floor_ceiling(data, vars.top, vars.bottom, x);
 }
 
+//will create the 3d projection
 void	create_projection(t_info *data)
 {
 	unsigned int	x;

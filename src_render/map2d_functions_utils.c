@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:43 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:44 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:45:02 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_vector	calc_ray_vector(double degree, double distance)
 	return (ray);
 }
 
+//draw the players viewing cone on the minimap
 void	draw_viewing_cone(t_info *data)
 {
 	double		i;
@@ -47,6 +48,7 @@ void	draw_viewing_cone(t_info *data)
 	}
 }
 
+//draw a single red line (ray) on image buffer
 void	draw_ray(mlx_image_t *img, t_vector ray, t_vector playerpos,
 			unsigned int pixelsize)
 {

@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:08:08 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:08:08 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 12:46:43 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_coor	vec_to_coor(t_vector vec)
 	return (temp_coor);
 }
 
+//adding two vectors and return the result
 t_vector	add_vectors(t_vector vec1, t_vector vec2)
 {
 	t_vector	result;
@@ -32,6 +33,7 @@ t_vector	add_vectors(t_vector vec1, t_vector vec2)
 	return (result);
 }
 
+//subtracting two vectors and return the result
 t_vector	subtract_vectors(t_vector vec1, t_vector vec2)
 {
 	t_vector	result;
@@ -44,7 +46,6 @@ t_vector	subtract_vectors(t_vector vec1, t_vector vec2)
 //this function rotates the vector
 //the degree multiplied by negative number because the y coordinates
 //on the imagebuffer increment when going down and decrement when going up.
-
 t_vector	rotate_vector(t_vector vec, double degree)
 {
 	double		radians;

@@ -6,12 +6,13 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:48 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:49 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:43:59 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/render.h"
 
+//initialize the minimap
 int	init_minimap(t_info *gamedata, unsigned int max_pixels_minimap)
 {
 	unsigned int	miniwidth;
@@ -37,6 +38,7 @@ int	init_minimap(t_info *gamedata, unsigned int max_pixels_minimap)
 	return (1);
 }
 
+//draw the player on the minimap
 void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 {
 	unsigned int	x;
@@ -64,6 +66,7 @@ void	draw_player(mlx_image_t *img, t_player player, unsigned int pixelsize)
 				headingline)), img, WHITE);
 }
 
+//draw a wall on the minimap at the specified position
 static void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y
 			, unsigned int pixelsize)
 {
@@ -84,6 +87,7 @@ static void	draw_wall(mlx_image_t *img, unsigned int x, unsigned int y
 	}
 }
 
+//draw a floor tile on the the specified position
 static void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y
 		, unsigned int pixelsize)
 {
@@ -104,6 +108,7 @@ static void	draw_floor(mlx_image_t *img, unsigned int x, unsigned int y
 	}
 }
 
+//draw the minimap
 void	draw_map(t_info *data)
 {
 	unsigned int	pixelsize;
