@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:29 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 13:53:16 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/14 16:24:23 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,6 @@ unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x
 		return (*(unsigned int *) dst);
 	}
 	return (0XFF000000);
-}
-
-//will get the value of a specific part of a colour
-unsigned char	get_colour_value(unsigned int colour, char colourpart)
-{
-	if (colourpart == 'r')
-		return ((unsigned char)(colour & 0x000000FF));
-	else if (colourpart == 'g')
-		return ((unsigned char)((colour & 0x0000FF00) >> 8));
-	else if (colourpart == 'b')
-		return ((unsigned char)((colour & 0x00FF0000) >> 16));
-	return (0);
 }
 
 //since MLX42 uses the RGBA format the color need to be created as such
