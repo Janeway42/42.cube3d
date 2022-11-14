@@ -65,7 +65,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(MAKE) -C $(LIB_DIR)/$(LIBFT_DIR) 
 	$(MAKE) -C $(LIB_DIR)/$(MLX42_DIR)
-	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIB_INCLUDE) $(LIB_FLAGS) -O3
+	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIB_INCLUDE) $(LIB_FLAGS)
 
 %.o: %.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) $(LIB_INCLUDE) -c $< -o $@ 

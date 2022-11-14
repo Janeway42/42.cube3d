@@ -4,7 +4,7 @@ WE ./images/brick3.png
 EA ./images/brick4.png
 
 F 255,0, 0
-C 255,   0   ,  255
+C 0,255,0
 
 SO ./images/brick2.png
 
