@@ -1,16 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/14 12:41:14 by hman          ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/initialize.h"
-
-char	*assign_memory(void)
-{
-	char	*str;
-	int				i;
-
-	str = malloc(sizeof(char *) * 3);
-	if (!str)
-		error_exit_input("malloc fail");
-	str[2] = '\0';
-	return (str);
-}
 
 static void	initialize_data(t_data *data)
 {
@@ -21,10 +21,10 @@ static void	initialize_data(t_data *data)
 	data->map_columns = 0;
 	data->player = 0;
 	data->player_direction = -1;
-	data->north = assign_memory();
-	data->south = assign_memory();
-	data->east = assign_memory();
-	data->west = assign_memory();
+	data->north = NULL;
+	data->south = NULL;
+	data->east = NULL;
+	data->west = NULL;
 }
 
 // -------------------------------------------------------------
@@ -40,7 +40,7 @@ void	check_extension(char *str1, char *str2)
 		error_exit_input("failed split");
 	if (!split[1] || ft_strncmp(split[1], str2, size) != 0)
 		error_exit_input("wrong extension");
-	free(split);
+	free_double(split);
 }
 
 // -------------------------------------------------------------
@@ -61,5 +61,7 @@ int	main(int argc, char **argv)
 		printf("Wrong number of argumnets\n");
 		return (1);
 	}
+	free_map(&data);
+	system("leaks -q cub3d");
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   colours.h                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:06:07 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:06:10 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef COLOURS_H
 # define COLOURS_H
 //The hexadeximals for the colors following the RGBA 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:08:03 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:08:04 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/render.h"
 
 static void	process_movement_input(t_info *data, double angle)
@@ -50,6 +62,16 @@ void	hook(void *param)
 	draw_player(data->imgmini, data->player, data->mini_pixelsize);
 }
 
+static void	clean_up_mlx(t_info *gamedata)
+{
+	mlx_delete_texture(gamedata->texture[0]);
+	mlx_delete_texture(gamedata->texture[1]);
+	mlx_delete_texture(gamedata->texture[2]);
+	mlx_delete_texture(gamedata->texture[3]);
+	mlx_delete_image(gamedata->mlx, gamedata->img);
+	mlx_delete_image(gamedata->mlx, gamedata->imgmini);
+}
+
 void	render(t_data *data)
 {
 	mlx_t			*mlx;
@@ -74,5 +96,6 @@ void	render(t_data *data)
 		gamedata.img->height - gamedata.imgmini->height);
 	mlx_loop_hook(gamedata.mlx, &hook, &gamedata);
 	mlx_loop(gamedata.mlx);
+	clean_up_mlx(&gamedata);
 	mlx_terminate(gamedata.mlx);
 }

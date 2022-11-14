@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   image_buffer_functions.c                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:07:39 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:07:40 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/render.h"
 
 void	draw_pixel(mlx_image_t *img, unsigned int x, unsigned int y

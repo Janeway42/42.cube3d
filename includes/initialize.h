@@ -1,39 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   initialize.h                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:06:25 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:06:27 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef INITIALIZE_H
-#define INITIALIZE_H
+# define INITIALIZE_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
-#include "libft.h"
-#include "get_next_line.h"
+# include "libft.h"
+# include "get_next_line.h"
 
-#define MAP_ROW " 01NSEW"
-#define MAP_PLAYER "NSEW"
-#define COLOR "0123456789,"
+# define MAP_ROW " 01NSEW"
+# define MAP_PLAYER "NSEW"
+# define COLOR "0123456789,"
 
-
-typedef struct  s_data
+typedef struct s_data
 {
-	char *north;
-    char *south;
-    char *east;
-    char *west;
-
-	unsigned char ceiling[3];
-	unsigned char floor[3];
-
-    char **map;  // map  - 2d array   
-
-    int nr_paths;
-    int nr_colors;
-    int player;
-	double player_pos[2];
-    int player_direction;
-    int map_start;
-    int map_rows;
-    int map_columns;
-}               t_data;
+	char			*north;
+	char			*south;
+	char			*east;
+	char			*west;
+	unsigned char	ceiling[3];
+	unsigned char	floor[3];
+	char			**map;
+	int				nr_paths;
+	int				nr_colors;
+	int				player;
+	double			player_pos[2];
+	int				player_direction;
+	int				map_start;
+	int				map_rows;
+	int				map_columns;
+}				t_data;
 
 /*
 // ---------------- Verify & Parsing---------------------- 
@@ -52,19 +60,19 @@ void	check_map_validity( t_data *data);
 // ----------------- Render --------------------
 */
 
-void render(t_data *data);
+void	render(t_data *data);
 
 /*
 // ---------------- Free ---------------------- 
 */
 
-void free_double(char **str);
-void free_map(t_data *data);
+void	free_double(char **str);
+void	free_map(t_data *data);
 
 /*
 // ---------------- Error ---------------------- 
 */
 
-void error_exit_input(char *str);
+void	error_exit_input(char *str);
 
 #endif

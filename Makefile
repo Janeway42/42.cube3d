@@ -1,5 +1,5 @@
 NAME = cub3d
-CFLAGS	= #-Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 UNAME = $(shell uname -s)
 
 # libraries
@@ -52,14 +52,9 @@ GNL			=	get_next_line.c\
 				get_next_line_utils.c
 
 #object files
-OBJ_DIR = obj
-#OBJ_INIT = $(SRC_INIT:$(SRC_INIT_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJ_INIT		=	$(SRC_INIT:%.c=$(SRC_INIT_DIR)%.o)
-#OBJ_RENDER = $(SRC_RENDER:$(SRC_RENDER_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJ_RENDER		=	$(SRC_RENDER:%.c=$(SRC_RENDER_DIR)%.o)
-#OBJ_UTILS = $(UTILS:$(UTILS_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJ_UTILS		=	$(UTILS:%.c=$(UTILS_DIR)%.o)
-#OBJ_GNL	=	$(GNL:%.c=$(GNL_DIR)%.o)
 OBJ_GNL		=	$(GNL:%.c=$(GNL_DIR)%.o)
 
 OBJ_FILES = $(OBJ_INIT) $(OBJ_RENDER) $(OBJ_UTILS) $(OBJ_GNL)

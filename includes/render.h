@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   render.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:06:42 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:06:43 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
 
@@ -10,9 +22,9 @@
 # include "initialize.h"
 
 //definition windows resolution
-#define WIDTH 1280
-#define HEIGHT 720
-#define MINIMAP_MAX_PIXEL_SIZE 400
+# define WIDTH 1280
+# define HEIGHT 720
+# define MINIMAP_MAX_PIXEL_SIZE 400
 
 //testing REMOVE
 # include <stdio.h>
@@ -78,7 +90,8 @@ void			create_projection(t_info *data);
 //----------------------------------------
 // Colour functions
 //----------------------------------------
-unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x, unsigned int y);
+unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x,
+					unsigned int y);
 unsigned char	get_colour_value(unsigned int colour, char colourpart);
 unsigned int	grading_colour(unsigned int colour, double percentage);
 unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b,

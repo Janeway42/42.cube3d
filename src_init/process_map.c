@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   process_map.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/11 17:07:14 by cpopa         #+#    #+#                 */
+/*   Updated: 2022/11/11 17:11:53 by cpopa         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/initialize.h"
 
-void	print_map(t_data *data) // remove -------------------------------------
-{
-	int	i;
-	int	j;
+// void	print_map(t_data *data)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (i < data->map_rows)
-	{
-		j = 0;
-		while (j < data->map_columns)
-		{
-			printf("%c", data->map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	printf("\n");
-}
+// 	i = 0;
+// 	while (i < data->map_rows)
+// 	{
+// 		j = 0;
+// 		while (j < data->map_columns)
+// 		{
+// 			printf("%c", data->map[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// 	printf("\n");
+// }
 
 static void	allocate_memory_map(t_data *data)
 {
@@ -57,30 +69,33 @@ static void	copy_row(int i, char *line, t_data *data)
 	}
 }
 
-// function takes the map in three batches: first line, middle section and last line
+// map is processed in three batches: first line, middle section and last line
 // it first checks whether the line is a map line containing { ,0,1,N,S,E,W}
 // and then it copies to data->map
-// first line gets verrified in process_input.c/find_map_start(int fd, t_data *data)
-// ---------------------------------------------------------------------------------
+// first line verrified in process_input.c/find_map_start(int fd, t_data *data)
+// -----------------------------------------------------------------------------
 
 void	check_store_map(int fd, char **line, t_data *data)
 {
 	int	i;
+	int	bytes;
 
 	i = 0;
 	allocate_memory_map(data);
 	copy_row(i, *line, data);
 	i++;
-	while (get_next_line(fd, line) > 0 && i < data->map_rows)
+	free(*line);
+	bytes = get_next_line(fd, line);
+	while (bytes > 0 && i < data->map_rows)
 	{
 		if (i < data->map_rows && check_row_map(*line) == 1)
 			error_exit_input("invalid map row");
 		copy_row(i, *line, data);
 		i++;
+		free(*line);
+		bytes = get_next_line(fd, line);
 	}
 	if (check_row_map(*line) == 1)
 		error_exit_input("invalid map row");
 	copy_row(i, *line, data);
-
-	print_map(data); // remove ----------------------------
 }
