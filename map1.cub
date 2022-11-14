@@ -1,7 +1,7 @@
 NO ./images/brick1.png
 SO ./images/brick2.png
-WE ./images/brick3.png
 EA ./images/brick4.png
+WE ./images/brick3.png
 
 F 220,100,0
 C 225,30,0

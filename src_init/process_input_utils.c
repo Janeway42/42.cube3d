@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:56 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:06:57 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 17:05:03 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,36 @@ int	check_row_map(char *line)
 		i++;
 	}
 	return (0);
+}
+
+// checks whether there is a comma at the end of the color input
+// ----------------------------------------------------------------------
+
+void	check_end_comma(char *str)
+{
+	int	length;
+
+	length = ft_strlen(str);
+	while (length > -1 && ft_isdigit(str[length]) == 0)
+	{
+		if (str[length] == ',' && str[length - 1] != ',')
+			error_exit_input("invalid color input, too many commas");
+		length--;
+	}
+}
+
+// checks whether all paths and all colors are present in the input
+// ----------------------------------------------------------------------
+
+void	true_input_verify(bool array[])
+{
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (array[i] == false)
+			error_exit_input("missing path/color input");
+		i++;
+	}
 }

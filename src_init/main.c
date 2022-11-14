@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 12:41:14 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/14 16:26:48 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	initialize_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	data->nr_paths = 0;
 	data->nr_colors = 0;
 	data->map_start = 0;
@@ -25,6 +28,11 @@ static void	initialize_data(t_data *data)
 	data->south = NULL;
 	data->east = NULL;
 	data->west = NULL;
+	while (i < 6)
+	{
+		data->true_input[i] = false;
+		i++;
+	}
 }
 
 // -------------------------------------------------------------
@@ -62,6 +70,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	free_map(&data);
-	system("leaks -q cub3d");
+	system("leaks -q cub3D");
 	return (0);
 }

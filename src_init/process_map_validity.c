@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:08 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:07:09 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:07:54 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	row_verification(char **map, int i)
 static void	process_player(int i, int j, t_data *data)
 {
 	if (data->player == 1)
-		error_exit_input("invalid map");
+		error_exit_input("invalid player map input");
 	data->player = 1;
 	if (data->map[i][j] == 'N')
 		data->player_direction = 90;
@@ -100,5 +100,5 @@ void	check_map_validity(t_data *data)
 	}
 	row_verification(data->map, i);
 	if (data->player == 0)
-		error_exit_input("invalid map");
+		error_exit_input("invalid player map input");
 }

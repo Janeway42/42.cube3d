@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
 UNAME = $(shell uname -s)
 
@@ -55,7 +55,7 @@ GNL			=	get_next_line.c\
 OBJ_INIT		=	$(SRC_INIT:%.c=$(SRC_INIT_DIR)%.o)
 OBJ_RENDER		=	$(SRC_RENDER:%.c=$(SRC_RENDER_DIR)%.o)
 OBJ_UTILS		=	$(UTILS:%.c=$(UTILS_DIR)%.o)
-OBJ_GNL		=	$(GNL:%.c=$(GNL_DIR)%.o)
+OBJ_GNL			=	$(GNL:%.c=$(GNL_DIR)%.o)
 
 OBJ_FILES = $(OBJ_INIT) $(OBJ_RENDER) $(OBJ_UTILS) $(OBJ_GNL)
 
@@ -68,7 +68,6 @@ $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME) $(LIB_INCLUDE) $(LIB_FLAGS) -O3
 
 %.o: %.c $(HEADER_FILES)
-	@mkdir -p obj
 	$(CC) $(CFLAGS) $(LIB_INCLUDE) -c $< -o $@ 
 
 clean:

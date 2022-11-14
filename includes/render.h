@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:42 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 16:24:37 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/11 17:06:43 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void			create_projection(t_info *data);
 //----------------------------------------
 unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x,
 					unsigned int y);
+unsigned char	get_colour_value(unsigned int colour, char colourpart);
 unsigned int	grading_colour(unsigned int colour, double percentage);
 unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b,
 					unsigned char a);

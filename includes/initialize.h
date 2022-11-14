@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:25 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:06:27 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/14 17:00:55 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # include "libft.h"
 # include "get_next_line.h"
@@ -32,6 +33,7 @@ typedef struct s_data
 	char			*west;
 	unsigned char	ceiling[3];
 	unsigned char	floor[3];
+	bool			true_input[6];		
 	char			**map;
 	int				nr_paths;
 	int				nr_colors;
@@ -53,6 +55,8 @@ void	check_extension(char *str1, char *str2);
 int		check_player(char c, const char *array);
 int		process_input(char *file, t_data *data);
 char	*process_path_color(int fd, t_data *data);
+void	check_end_comma(char *str);
+void	true_input_verify(bool array[]);
 void	check_store_map(int fd, char **line, t_data *data);
 void	check_map_validity( t_data *data);
 
