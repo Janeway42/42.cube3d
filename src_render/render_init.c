@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:57 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 14:01:37 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 12:46:29 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->mlx = mlx;
 	gamedata->img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (!gamedata->img)
-		return (-1);
+		return (FAILURE);
 	load_textures(data, gamedata);
 	gamedata->player.position.x = data->player_pos[1];
 	gamedata->player.position.y = data->player_pos[0];
@@ -52,12 +52,12 @@ int	init_gamestate(t_data *data, t_info *gamedata, mlx_t *mlx)
 	gamedata->rotation_angle = 3.0;
 	gamedata->map = data->map;
 	if (gamedata->map == NULL)
-		return (-1);
+		return (FAILURE);
 	gamedata->map_width = data->map_columns;
 	gamedata->map_height = data->map_rows;
 	gamedata->ceiling_colour = create_colour(data->ceiling[0], data->ceiling[1],
 			data->ceiling[2], 255);
 	gamedata->floor_colour = create_colour(data->floor[0], data->floor[1],
 			data->floor[2], 255);
-	return (1);
+	return (SUCCES);
 }

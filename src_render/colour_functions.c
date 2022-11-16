@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:29 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 16:24:23 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 12:54:33 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ unsigned int	get_colour_png(mlx_texture_t *png, unsigned int x
 		dst = png->pixels + offset;
 		return (*(unsigned int *) dst);
 	}
-	return (0XFF000000);
+	return (0X00000000);
 }
 
 //since MLX42 uses the RGBA format the color need to be created as such

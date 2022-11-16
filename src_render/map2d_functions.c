@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:48 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 13:43:59 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 12:47:47 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	init_minimap(t_info *gamedata, unsigned int max_pixels_minimap)
 	}
 	gamedata->imgmini = mlx_new_image(gamedata->mlx, miniwidth, miniheight);
 	if (gamedata->imgmini == NULL)
-		return (-1);
-	return (1);
+		return (FAILURE);
+	return (SUCCES);
 }
 
 //draw the player on the minimap

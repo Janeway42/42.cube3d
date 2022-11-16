@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:08:03 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 13:37:55 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 13:24:24 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,24 @@ void	render(t_data *data)
 {
 	mlx_t			*mlx;
 	t_info			gamedata;
-	unsigned int	max_pixels_minimap;
 
-	max_pixels_minimap = MINIMAP_MAX_PIXEL_SIZE;
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);
 	if (!mlx)
 		error_exit_input("Couldn't initialize MLX\n");
-	if (init_gamestate(data, &gamedata, mlx) == -1)
+	if (init_gamestate(data, &gamedata, mlx) == FAILURE)
 		error_exit_input("Something went wrong with initializing gamestate\n");
 	create_projection(&gamedata);
-	if (init_minimap(&gamedata, max_pixels_minimap) == -1)
+	if (init_minimap(&gamedata, MINIMAP_MAX_PIXEL_SIZE) == FAILURE)
 		error_exit_input("Something went wrong with initializing minimap\n");
 	draw_map(&gamedata);
 	draw_viewing_cone(&gamedata);
 	draw_player(gamedata.imgmini, gamedata.player, gamedata.mini_pixelsize);
-	mlx_image_to_window(gamedata.mlx, gamedata.img, 0, 0);
-	mlx_image_to_window(gamedata.mlx, gamedata.imgmini,
-		gamedata.img->width - gamedata.imgmini->width,
-		gamedata.img->height - gamedata.imgmini->height);
+	if (mlx_image_to_window(gamedata.mlx, gamedata.img, 0, 0) == FAILURE)
+		error_exit_input("Something went wrong with pushing the image buffer.");
+	if (mlx_image_to_window(gamedata.mlx, gamedata.imgmini,
+			gamedata.img->width - gamedata.imgmini->width,
+			gamedata.img->height - gamedata.imgmini->height) == FAILURE)
+		error_exit_input("Something went wrong with pushing the image buffer.");
 	mlx_loop_hook(gamedata.mlx, &hook, &gamedata);
 	mlx_loop(gamedata.mlx);
 	clean_up_mlx(&gamedata);

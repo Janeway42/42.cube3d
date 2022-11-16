@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:35 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:06:37 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 12:44:43 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ enum e_side
 	SOUTH = 1,
 	WEST = 2,
 	NORTH = 3
+};
+
+enum e_status
+{
+	FAILURE = -1,
+	SUCCES = 1
 };
 
 typedef struct s_coor
