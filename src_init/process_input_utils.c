@@ -6,21 +6,11 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:56 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 12:29:11 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 15:20:46 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/initialize.h"
-
-int	open_fd(char *file)
-{
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		error_exit_input("failed to open fd");
-	return (fd);
-}
 
 // checks if the element of a row belongs to the array
 // ----------------------------------------------------------------------
@@ -68,7 +58,27 @@ int	check_row_map(char *line)
 	return (0);
 }
 
-// checks whether there is a comma at the end of the color input
+// checks whether there are too many commas
+// ----------------------------------------------------------------------
+
+static void	count_commas(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 1;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ',')
+			count++;
+		i++;
+	}
+	if (count > 2)
+		error_exit_input("invalid color input, too many commas");
+}
+
+// checks whether there are commans at the begining or at the end
 // ----------------------------------------------------------------------
 
 void	check_end_comma(char *str)
@@ -76,6 +86,7 @@ void	check_end_comma(char *str)
 	int	length;
 	int	i;
 
+	count_commas(str);
 	i = 1;
 	while (str[i] != '\0' && ft_isdigit((int)str[i]) == 0)
 	{

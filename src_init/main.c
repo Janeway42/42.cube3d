@@ -6,11 +6,21 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 14:47:45 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 15:16:01 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/initialize.h"
+
+int	open_fd(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		error_exit_input("failed to open fd");
+	return (fd);
+}
 
 static void	initialize_data(t_data *data)
 {
