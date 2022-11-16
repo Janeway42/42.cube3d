@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:08:03 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 13:24:24 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 14:07:38 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	render(t_data *data)
 	mlx_t			*mlx;
 	t_info			gamedata;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);
+	mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", false);
 	if (!mlx)
 		error_exit_input("Couldn't initialize MLX\n");
 	if (init_gamestate(data, &gamedata, mlx) == FAILURE)
