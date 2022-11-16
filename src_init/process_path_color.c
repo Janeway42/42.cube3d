@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 14:29:34 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 19:25:44 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static unsigned char	verify_color_elem(char *str)
 	trim_str = ft_strtrim(str, " ");
 	if (ft_strncmp(trim_str, temp_str, ft_strlen(trim_str)) != 0)
 		error_exit_input("invalid color input");
-	if (temp < 0 || temp > 255)
+	if (temp > 255)
 		error_exit_input("invalid color");
 	free(temp_str);
 	free(trim_str);

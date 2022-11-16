@@ -1,0 +1,15 @@
+NO ./images/brick1.png
+
+WE ./images/brick3.png
+EA ./images/brick4.png
+
+F 0,255,0
+C 0,0,255
+
+SO ./images/brick2.png
+
+11111
+10001
+10N01
+10001
+11111
