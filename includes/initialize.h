@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:25 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:00:55 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 12:53:59 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 # define MAP_ROW " 01NSEW"
 # define MAP_PLAYER "NSEW"
-# define COLOR "0123456789,"
 
 typedef struct s_data
 {
