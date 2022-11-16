@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:37:22 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 11:14:19 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ static void	process_color(char *line, unsigned char array[],
 		error_exit_input("too many colors");
 	check_end_comma(line);
 	i = 1;
-	while (line[i] == ' ')
-		i++;
 	split = ft_split((line + i), ',');
 	if (!split || !split[0] || !split[1] || !split[2])
 		error_exit_input("failed ft_split");
