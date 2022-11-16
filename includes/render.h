@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:42 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 19:34:23 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 22:30:18 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include "initialize.h"
 
 //definition windows resolution
-# define WIDTH 1000 
-# define HEIGHT 1000
-# define MINIMAP_MAX_PIXEL_SIZE 100
+# define WIDTH 1280 
+# define HEIGHT 720
+# define MINIMAP_MAX_PIXEL_SIZE 300
 
 //----------------------------------------
 // render init functions

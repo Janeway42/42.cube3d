@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:35 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 12:44:43 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 22:18:45 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_draw_tex_vars
 	unsigned int	bottom;
 	double			step;
 	double			wall_height_perc;
-	unsigned int	tex_start;
+	double			tex_start;
 	mlx_texture_t	*wall;
 }				t_draw_tex_vars;
 

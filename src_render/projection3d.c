@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:53 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 13:41:28 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/16 22:28:32 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height
 	t_draw_tex_vars	vars;
 
 	vars.wall = data->texture[result->side];
+	vars.step = 1.0 * vars.wall->height / wall_height;
 	if (wall_height > data->img->height)
 	{
 		vars.top = 0;
@@ -77,7 +78,6 @@ static void	draw_tex_wall(t_info *data, unsigned int x, unsigned int wall_height
 		vars.bottom = (data->img->height + wall_height) / 2;
 		vars.tex_start = 0.0;
 	}
-	vars.step = 1.0 * vars.wall->height / wall_height;
 	vars.wall_height_perc = 1.0 * wall_height / data->img->height;
 	draw_tex_wall_column(data->img, x, result, &vars);
 	draw_floor_ceiling(data, vars.top, vars.bottom, x);
