@@ -3,8 +3,8 @@ NO ./images/brick1.png
 WE ./images/brick3.png
 EA ./images/brick4.png
 
-F 255,0, 0
-C 0,255,0
+F 0,255, 0
+C 0,0,255
 
 SO ./images/brick2.png
 

@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 14:30:05 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 14:47:45 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ int	main(int argc, char **argv)
 		printf("Wrong number of arguments\n");
 		return (1);
 	}
-	system("leaks -q cub3D");
 	return (0);
 }

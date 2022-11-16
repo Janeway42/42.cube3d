@@ -6,31 +6,11 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:14 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/11 17:11:53 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 14:52:48 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/initialize.h"
-
-// void	print_map(t_data *data)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < data->map_rows)
-// 	{
-// 		j = 0;
-// 		while (j < data->map_columns)
-// 		{
-// 			printf("%c", data->map[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// 	printf("\n");
-// }
 
 static void	allocate_memory_map(t_data *data)
 {

@@ -1,14 +1,14 @@
-NO ./images/brick1.png
-
-
-F 0,100,0
-WE       ./images/brick3.png
-EA    ./images/brick4.png
-SO ./images/brick2.png
 C 225,30,0
+NO ./images/brick1.png
+WE       ./images/brick3.png
+
+F 0,    255,   0
+EA                  ./images/brick4.png
+
+SO ./images/brick2.png
 
 111111
-100101
-101N01
-110101
+100101    111
+101E011111101
+1101011   111
 111111
