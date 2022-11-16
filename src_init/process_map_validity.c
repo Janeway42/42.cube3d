@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:08 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:46:24 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 14:14:29 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	middle_section(char **map, int i, t_data *data)
 	j = 0;
 	element_verification(data->map, i, j);
 	j++;
-	while (j < data->map_columns)
+	while (j < data->map_columns - 1)
 	{
 		if (map[i][j] == '0' || check_player(map[i][j], MAP_PLAYER) == 1)
 		{

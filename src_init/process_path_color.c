@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 11:14:19 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 14:29:34 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ static void	process_color(char *line, unsigned char array[],
 							t_data *data, int k)
 {
 	char	**split;
-	int		i;
 
 	if (data->nr_colors > 1)
 		error_exit_input("too many colors");
 	check_end_comma(line);
-	i = 1;
-	split = ft_split((line + i), ',');
+	split = ft_split((line + 1), ',');
 	if (!split || !split[0] || !split[1] || !split[2])
 		error_exit_input("failed ft_split");
 	if (split[3] != NULL)
@@ -63,19 +61,19 @@ static void	process_path(char *line, char **str, t_data *data, int k)
 
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
-	split = ft_split(line, ' ');
-	if (!split || !split[0] || !split[1])
+	split = ft_split(line + 2, ' ');
+	if (!split || !split[0])
 		error_exit_input("failed ft_split");
-	if (split[2] != NULL)
+	if (split[1] != NULL)
 		error_exit_input("invalid path input");
-	fd = open(split[1], O_RDONLY);
+	fd = open(split[0], O_RDONLY);
 	if (fd == -1)
 	{
 		free_double(split);
 		error_exit_input("invalid path");
 	}
-	check_extension(split[1], "png");
-	*str = ft_strdup(split[1]);
+	check_extension(split[0], "png");
+	*str = ft_strdup(split[0]);
 	free_double(split);
 	data->nr_paths++;
 	data->true_input[k] = true;

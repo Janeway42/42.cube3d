@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/14 16:26:48 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 14:30:05 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ int	main(int argc, char **argv)
 		initialize_data(&data);
 		process_input(argv[1], &data);
 		render(&data);
+		free_map(&data);
 	}
 	else
 	{
-		printf("Wrong number of argumnets\n");
+		printf("Wrong number of arguments\n");
 		return (1);
 	}
-	free_map(&data);
 	system("leaks -q cub3D");
 	return (0);
 }
