@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:56 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 11:15:30 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/16 12:29:11 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	check_end_comma(char *str)
 	{
 		if (str[i] == ',')
 			error_exit_input("invalid color input, too many commas");
-			i++;
+		i++;
 	}
 	length = ft_strlen(str);
 	while (length > -1 && ft_isdigit(str[length]) == 0)
