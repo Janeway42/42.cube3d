@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/16 15:16:01 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/17 14:47:16 by cpopa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,24 @@ static void	initialize_data(t_data *data)
 
 void	check_extension(char *str1, char *str2)
 {
-	char	**split;
-	int		size;
+	int	size1;
+	int	size2;
+	int	i;
 
-	size = ft_strlen(str2);
-	split = ft_split(str1, '.');
-	if (split == NULL)
-		error_exit_input("failed split");
-	if (!split[1] || ft_strncmp(split[1], str2, size) != 0)
-		error_exit_input("wrong extension");
-	free_double(split);
+	i = 1;
+	size1 = ft_strlen(str1);
+	size2 = ft_strlen(str2);
+	while (size1 - i > -1 && size2 - i > -1)
+	{
+		if (str1[size1 - i] == str2[size2 - i])
+		{
+			if (size2 - i == 0)
+				break ;
+			i++;
+		}
+		else
+			error_exit_input("wrong extension");
+	}
 }
 
 // -------------------------------------------------------------
@@ -67,18 +75,20 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (argc == 2)
-	{
-		check_extension(argv[1], "cub");
-		initialize_data(&data);
-		process_input(argv[1], &data);
-		render(&data);
-		free_map(&data);
-	}
-	else
+	if (argc != 2)
 	{
 		printf("Wrong number of arguments\n");
 		return (1);
 	}
+	if (ft_strlen(argv[1]) == 0)
+	{
+		printf("No map to read\n");
+		return (1);
+	}
+	check_extension(argv[1], ".cub");
+	initialize_data(&data);
+	process_input(argv[1], &data);
+	render(&data);
+	free_map(&data);
 	return (0);
 }
