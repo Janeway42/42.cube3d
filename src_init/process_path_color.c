@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:07:19 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/18 19:40:02 by hman          ########   odam.nl         */
+/*   Updated: 2022/11/21 13:58:32 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	process_path(char *line, char **str, t_data *data, int k)
 	char	**split;
 	int		fd;
 
+	if (*str != NULL)
+		error_exit_input("double path");
 	if (data->nr_paths > 3)
 		error_exit_input("too many paths");
 	split = ft_split(line + 2, ' ');

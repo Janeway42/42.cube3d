@@ -6,7 +6,7 @@
 /*   By: cpopa <cpopa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 17:06:50 by cpopa         #+#    #+#                 */
-/*   Updated: 2022/11/17 14:47:16 by cpopa         ########   odam.nl         */
+/*   Updated: 2022/11/21 14:05:16 by hman          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	check_extension(char *str1, char *str2)
 }
 
 // -------------------------------------------------------------
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
