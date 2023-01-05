@@ -5,6 +5,11 @@ Wolfenstein 3D is the ancestor of games like Doom (Id Software, 1993), Doom II (
 
 This is a continuation of the concepts that have been introduced in the [FDF - Wireframe](https://github.com/Janeway42/FDF_wireframe) project with the introduction of raycasting. 
 
+Navigation:
+---
+- The **left** and **right** arrow keys of the keyboard must allow you to look left and right in the maze.
+- The **W**, **A**, **S**, and **D** keys must allow you to move the point of view through the maze.
+
 Run:
 ------
 - make
